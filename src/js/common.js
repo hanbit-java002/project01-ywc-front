@@ -69,6 +69,22 @@ define([
 			$(location).attr("href", "store.html");
 		}
 	});
+
+	/* 메뉴바 디테일스 */
+	$(".header-details>ul>li>ul>li>div").on("click", function() {
+		if($(this).hasClass("house-clicker")) {
+			$(location).attr("href", "gallery.html");
+			/* 파라미터를 받아서 하게끔 만들어야함*/
+			$("#select-type").val("title");
+		}
+		else if($(this).hasClass("commercial-clicker")) {
+
+		}
+		else if($(this).hasClass("partial-clicker")) {
+
+		}
+	});
+
 	/* 로고클릭시 메인페이지 가기*/
 	$(".main-logo").on("click", function() {
 			$(location).attr("href", "/");
@@ -77,6 +93,16 @@ define([
 	$(".header-details-bar>ul>li").on("click", function() {
 		$(".header-details-bar>ul>li").removeClass("header-details-bar-active");
 		$(this).addClass("header-details-bar-active");
+	});
+
+	/* 오른쪽 픽스 값*/
+	$(".right-bar-contents>ul>li").on("click", function() {
+		if ((this.id) === "detail-estimate") {
+			$(location).attr("href", "gallery.html");
+		}
+		else if ((this.id) === "easy-estimate") {
+
+		}
 	});
 
 	mainLogoEnter();

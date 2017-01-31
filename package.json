@@ -117,6 +117,16 @@
           "class": "estimate-confirm-clicker",
           "title": "협의확인서현황"
         }
+      ],
+      "store" : [
+        {
+          "subTitle": {
+            "titleImg": "img/index_icon_store.png",
+            "titleTitle": "집닥 스토어 OPEN!",
+            "titleDesc1": "집닥이 준비한 특별한 상품들을 만나보세요.",
+            "titleDesc2": ""
+          }
+        }
       ]
 
     }

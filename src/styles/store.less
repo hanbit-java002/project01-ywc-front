@@ -1,2 +1,54 @@
 @import 'lib/include.all.less';
 @import 'common.css';
+
+.zd-contents-wrapper {
+	@wrapper();
+}
+.zd-contents {
+	@wrapper-under();
+	padding: 0px 2%;
+}
+section {
+	padding: 50px 0px;
+}
+
+.store-list {
+	width: 100%;
+}
+.store-list>li {
+	margin: 0px 5px 10px 5px;
+	height: 308px;
+	width: calc(~"(100%/3) - 10px");
+	position: relative;
+}
+
+.store-list-img {
+	height: 79%;
+	width: 100%;
+	background-size: cover;
+
+}
+.store-list-textbox {
+	margin-top: 2%;
+	height: 19%;
+	width: 100%;
+}
+.store-list-title {
+	width: 100%;
+	font-size: 18px;
+}
+.store-list-date {
+	color: @color-font-light;
+}
+.store-list-applying {
+	position: absolute;
+	width: 60px ;
+	height: 60px ;
+	right: 10px;
+	top:79%;
+	transform: translateY(-100%);
+	background-color:rgba(255,255,255,0.8);
+	border-radius: 30px;
+	color: @color-mango;
+	padding: 9px;
+}
