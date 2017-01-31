@@ -13,7 +13,7 @@ ywc-Webapp is a front-end web application for zip-doc.
 
 ```
 git clone https://github.com/hanbit-java002/project01-ywc-front.git
-cd project01-ywc-fron
+cd project01-ywc-front
 npm install
 gulp
 ```
