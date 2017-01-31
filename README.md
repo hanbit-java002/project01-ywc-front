@@ -1,5 +1,5 @@
-# Pkjs Webapp Starter
-Pkjs Webapp Starter is a front-end web application template for professional web development. 
+# zip-doc
+ywc-Webapp is a front-end web application for zip-doc. 
 
 ## Prerequisites
 
@@ -12,8 +12,8 @@ Pkjs Webapp Starter is a front-end web application template for professional web
 ## Usage
 
 ```
-git clone https://github.com/pkworks/pkjs-webapp-starter.git
-cd pkjs-webapp-starter
+git clone https://github.com/hanbit-java002/project01-ywc-front.git
+cd project01-ywc-fron
 npm install
 gulp
 ```
