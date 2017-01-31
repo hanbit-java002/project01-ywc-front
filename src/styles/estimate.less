@@ -1,0 +1,615 @@
+@import 'lib/include.all.less';
+@import 'common.css';
+input:focus {
+	outline: none;
+}
+textarea:focus {
+	outline: none;
+}
+.zd-contents-wrapper {
+	@wrapper();
+	background-color: @color-background;
+}
+.zd-contents {
+	@wrapper-under();
+	padding: 0px 2%;
+	border-left: 1px solid @color-main-border;
+	border-right: 1px solid @color-main-border;
+	background-color: white;
+}
+select:focus {
+	outline: none;
+}
+/* 섹션 시작*/
+.estimate-apply {
+	display: none;
+	padding-bottom: 200px;
+}
+
+.estimate-navi {
+	padding: 40px 0px;
+}
+
+.estimate-navi>ul>li {
+	display: inline-block;
+	width: 100%/5;
+	position: relative;
+	height: 85px;
+	vertical-align: bottom;
+}
+.estimate-bar-text {
+	@abs-hcenter();
+	bottom: 0px;
+}
+
+.estimate-progress>div {
+	display: inline-block;
+}
+
+.progress-bar-right,
+.progress-bar-left{
+	background-color: @color-main-border;
+	width: 50%;
+	height: 2px;
+	position: absolute;
+	top: 10px;
+	z-index: 5;
+}
+.bar-right-active,
+.bar-left-active {
+	background-color: @color-mango;
+	width: 0%;
+	height: 3px;
+	position: absolute;
+	top: 10px;
+	z-index: 10;
+}
+.bar-right-active {
+	left: 50%;
+}
+.bar-left-active {
+	left: 0px;
+}
+
+.progress-bar-right {
+	right: 0px;
+}
+
+.progress-bar-left {
+	left: 0px;
+}
+.estimate-circle {
+	@abs-hcenter();
+	top:0px;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	background-color: #eee;
+	z-index: 20;
+
+}
+.estimate-char-img {
+	display: inline-block;
+	padding: 0px 20px;
+}
+
+.estimate-contents>ul>li,
+.estimate-contents>ul>div {
+	vertical-align: top;
+}
+.step-1,
+.step-2,
+.step-3,
+.step-4
+.step-5 {
+	text-align: left;
+	width: 75%;
+	padding: 0px 15px 100px 15px;
+}
+
+
+.step-1 {
+	display: none;
+}
+.estimate-title {
+	width: 100%;
+	background-color: @color-background;
+	border-radius: 7px;
+	font-size: 30px;
+	padding: 10px 30px;
+	position: relative;
+	margin-bottom: 20px;
+	text-align: left;
+}
+.estimate-triangle {
+	position: absolute;
+	left: -13px;
+	top: 33px;
+	width:0px;height:0px;
+	border-right:20px solid transparent; /*border의 성질을 이용해 오른쪽테두리만 투명으로 만든다. */
+	border-bottom:20px solid @color-background; /*border를 사용해 두께를 만든다.*/
+	transform: rotate(45deg);
+}
+.estimate-select {
+	display: inline-block;
+	height: 70px;
+	margin-right: 1%;
+	border-color: @color-mango;
+	color: @color-mango;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 3px;
+}
+.estimate-select-step1 {
+	width: 49%;
+}
+
+.estimate-select-step1:focus {
+	outline: none;
+}
+
+
+
+.step-2 {
+	display: none;
+
+}
+.estimate-select-box-step2 {
+	margin-bottom: 20px;
+}
+.estimate-select-step2 {
+	width: calc(~"(100% / 3) - 1% ");
+}
+.estimate-input-box-step2 {
+	width: 100%;
+	font-size: 16px;
+	padding: 3px;
+	border-color: @color-mango;
+	color: @color-mango;
+	border-radius: 3px;
+}
+.estimate-input-box-step2:focus {
+	outline: none;
+}
+.estimate-input-box>div {
+	color: @color-mango;
+}
+
+.step-3 {
+	display: none;
+}
+
+.estimate-select-step3 {
+	width: 100%;
+}
+.step-4 {
+	display: none;
+}
+.adder-step-4 {
+	display: none;
+	margin-top: 100px;
+	padding: 0px 15px;
+}
+.my-selects,
+recommend-selects{
+	margin-bottom: 30px;
+}
+.my-selects-contents {
+	width: 100%;
+	height: 280px;
+	padding: 80px;
+
+}
+.my-selects-contents {
+	border: 1px solid @color-main-border;
+
+}
+.my-selects-content {
+	width: 600px;
+	display: inline-block;
+}
+.my-selects-content-btn {
+	display: inline-block;
+	padding: 10px;
+	line-height: 20px;
+	color: white;
+	background-color: @color-mango;
+}
+.selects-title {
+	border-left: 2px solid orangered;
+	padding-left: 20px;
+	font-size: 18px;
+	text-align: left;
+	margin-bottom: 15px;
+}
+.my-selects-content {
+	border-left: 2px solid crimson;
+	padding-left: 20px;
+	font-size: 18px;
+	@margin-auto-width();
+}
+
+.recommend-selects-contents {
+	width: 100%;
+	height: 290px;
+
+	position: relative;
+	overflow: hidden;
+}
+.recommend-selects-contents>ul {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1000%;
+	height: 100%;
+	text-align: left;
+}
+.recommend-selects-contents>ul>li {
+	position: relative;
+	width: 250px;
+	height: 100%;
+	display: inline-block;
+	margin-right: 10px;
+	border: solid 1px @color-main-border;
+	border-radius: 7px;
+}
+@recommend-img-height: 60%;
+.recommend-img {
+	height: @recommend-img-height;
+	width: 100%;
+	background-size:cover;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+}
+.recommend-text {
+	height: 100% - @recommend-img-height;
+	width: 100%;
+	padding: 15px;
+	font-size: 14px;
+	text-align: left;
+}
+.recommend-text-title,
+.recommend-text-addr {
+	width: 100%;
+	margin-bottom: 5px;
+
+}
+.recommend-text-title {
+	color: @color-mango;
+}
+.recommend-text-descs,
+.recommend-text-addr {
+	color: @color-font-light;
+}
+.recommend-text-desc {
+	border: solid 1px @color-main-border;
+	border-radius: 2px;
+	padding: 2px;
+	display: inline-block;
+	margin-right: 2px;
+}
+.recommend-favor {
+	position: absolute;
+	height: 30px;
+	font-size: 16px;
+	color: white;
+	background-color: rgba(233,40,10,0.5);
+	text-align: center;
+	right: 0px;
+	top:@recommend-img-height;
+	line-height: 30px;
+	transform: translateY( -100% );
+	padding: 0px 10px;
+}
+.recommend-checkbox {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top:10px;
+	right: 10px;
+
+}
+.recommend-arrow {
+	position: absolute;
+	top:@recommend-img-height - 2%;
+	transform: translateY( -100% );
+	width: 32px;
+	height: 32px;
+	background-color: rgba(255,255,255,0.8);
+	color: @color-font-light;
+	font-size: 25px;
+	border-radius: 16px;
+}
+.arrow-left {
+	left: 10px;
+}
+.arrow-right {
+	right: 10px;
+}
+
+
+
+.estimate-title-desc {
+	padding-top: 8px;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 1.2;
+}
+/* 여기가 시작*/
+.construction {
+	display: inline-block;
+	width: 100%;
+	text-align: left;
+}
+.common-title {
+	padding: 10px 0px;
+	margin-bottom: 10px;
+	line-height: 1.3;
+}
+.common-title>div {
+	display: inline-block;
+}
+.common-title-text {
+	padding-left: 10px;
+	border-left: palevioletred solid 3px;
+	font-size: 18px;
+}
+
+.common-title-more {
+	font-size: 14px;
+	color:@color-font-light;
+	padding: 0px 10px;
+	margin-left: 2px;
+}
+
+
+
+
+.step-5 {
+	display: none;
+}
+.estimate-user-info {
+	text-align: left;
+	margin-bottom: 60px;
+}
+.estimate-user-style {
+	border-color: @color-mango;
+	padding: 2px 3px;
+	font-size: 16px;
+	color: @color-mango;
+	margin-right: 1%;
+	font-weight: bold;
+	border-radius: 3px;
+	margin-bottom: 5px;
+}
+.estimate-user-name {
+	width: 50%;
+}
+.estimate-user-phone>input,
+.estimate-user-phone-company {
+	display: inline-block;
+	width: 25%;
+}
+.estimate-user-size {
+	width: 100%;
+}
+.estimate-user-desc {
+	width: 100%;
+	min-height:214px ;
+	resize: vertical;
+}
+.estimate-user-privacy>div,
+.estimate-user-privacy>input{
+	display: inline-block;
+}
+.estimate-user-for3>div,
+.estimate-user-for3>input{
+	display: inline-block;
+}
+.estimate-user-bottom-title {
+	color: @color-mango;
+}
+.estimate-user-more {
+	color: @color-font-light;
+}
+
+
+.next-pre-box {
+	width: 100%;
+	@margin-auto-width();
+}
+.next-pre-box>div {
+	vertical-align: top;
+	font-size: 16px;
+	line-height: 40px;
+	width: 25%;
+	height:40px;
+	margin-right: 10px;
+}
+
+
+.estimate-pre {
+	display: none;
+	background-color: white;
+	border: 1px solid @color-main-border;
+	cursor: pointer;
+}
+.estimate-next {
+	display: none;
+	color:white;
+	background-color: @color-mango;
+	cursor: pointer;
+}
+
+.estimate-btn-active {
+	display: inline-block;
+}
+
+.circle-active {
+	background-color: @color-mango;
+}
+
+.estimate-active {
+	display: inline-block;
+	position: relative;
+}
+
+
+
+/* 견적신청현황( estimate-now)*/
+.estimate-now {
+	display: none;
+	padding-top: 40px;
+	padding-bottom: 80px;
+}
+.estimate-now-list {
+	width: 100%;
+	padding-bottom: 30px;
+}
+
+.now-list-num {
+	width: 8%;
+	height: 100%;
+}
+.now-list-date {
+	width: 12%;
+	height: 100%;
+}
+.now-list-div {
+	width: 6%;
+	height: 100%;
+}
+.now-list-name {
+	width: 39%;
+	height: 100%;
+}
+.now-list-type{
+	width: 8%;
+	height: 100%;
+}
+.now-list-size{
+	width: 8%;
+	height: 100%;
+}
+.now-list-user{
+	width: 9%;
+	height: 100%;
+}
+.now-list-status{
+	width: 10%;
+	height: 100%;
+}
+
+.estimate-now-list-title {
+	height: 40px;
+	border-bottom: 1px solid @color-font-light;
+	font-weight: bold;
+}
+.estimate-now-list-title>li {
+	@fill();
+}
+.estimate-now-list-title>li>div {
+	display: inline-block;
+	line-height: 40px;
+
+}
+
+.estimate-now-list-desc {
+	height: 44px;
+	border-bottom: 1px dashed @color-main-border;
+}
+.estimate-now-list-desc>li {
+	@fill();
+}
+.estimate-now-list-desc>li>div {
+	display: inline-block;
+	line-height: 44px;
+	vertical-align: top;
+}
+.estimate-now-list-desc .now-list-partners,
+.estimate-now-list-desc .now-list-confirm-day,
+.estimate-now-list-desc .now-list-contract-day,
+.estimate-now-list-desc .now-list-num,
+.estimate-now-list-desc .now-list-date,
+.estimate-now-list-desc .now-list-div,
+.estimate-now-list-desc .now-list-type,
+.estimate-now-list-desc .now-list-size,
+.estimate-now-list-desc .now-list-user,
+.estimate-now-list-desc .now-list-status {
+	color: @color-font-light;
+}
+.estimate-now-list-desc .now-list-name,
+.estimate-now-list-desc .now-list-contract-name {
+	text-align: left;
+}
+.new-img {
+	background-image: url('../img/icon_new.png');
+	width: 22px;
+	height: 22px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.estimate-search-box {
+	width: 500px;
+	padding: 0px 2%;
+	height: 40px;
+	@margin-auto-width();
+	margin-top: 30px;
+}
+.estimate-search-box>input {
+	display: inline-block;
+	width: 90%;
+	height: 100%;
+	line-height: 40px;
+	border: 1px solid @color-main-border;
+	z-index: 1;
+	color: @color-mango;
+	vertical-align: top;
+}
+
+.estimate-search-box>input:focus {
+	border: 1px solid @color-mango;
+}
+.estimate-search-btn {
+	display: inline-block;
+	width: 10%;
+	height: 100%;
+	line-height: 40px;
+	background-color: @color-mango;
+	color: white;
+	z-index: 10;
+	vertical-align: top;
+}
+
+/* 견적신청현황( estimate-confirm)*/
+
+.estimate-confirm {
+	display: none;
+	padding-top: 40px;
+	padding-bottom: 80px;
+}
+.now-list-contract-day {
+	width: 12%;
+	height: 100%;
+}
+.now-list-confirm-day {
+	width: 12%;
+	height: 100%;
+}
+.now-list-contract-name {
+	width: 37%;
+	height: 100%;
+}
+.now-list-partners {
+	width: 12%;
+	height: 100%;
+}
+
+
+.common-active {
+	display: block;
+}

@@ -1,0 +1,35 @@
+{
+	"server_name": [
+		"localhost"
+	],
+	"listen": 83,
+	"statics": [
+		{
+			"location": "/youngwookPjt/habit/zip-doc/dist",
+			"root": ""
+		}
+	],
+	"proxys": [
+		{
+			"location": "/api/",
+			"backends_name": "backend",
+			"backends": [
+				{
+					"address": "127.0.0.1",
+					"port": 8380
+				}
+			]
+		}
+	],
+	"globals": {
+		"trust_proxy": true
+	},
+	"logs": {
+		"access": {
+			"path": "logs/acc.pkjs.log"
+		},
+		"error": {
+			"path": "logs/err.pkjs.log"
+		}
+	}
+}

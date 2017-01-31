@@ -1,0 +1,43 @@
+@fill: {
+    width: 100%;
+    height: 100%;
+};
+
+@margin-auto-width: {
+    margin-left: auto;
+    margin-right: auto;
+};
+
+@abs-vmiddle: {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+};
+
+@abs-hcenter: {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+};
+
+@abs-center: {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+};
+
+@border-bottom: {
+	border: solid 1px @color-main-border;
+};
+
+@wrapper: {
+	width:100%;
+	text-align:center;
+};
+@zipdoc-contents-width:1170px;
+
+@wrapper-under: {
+	width: @zipdoc-contents-width;
+	@margin-auto-width();
+};

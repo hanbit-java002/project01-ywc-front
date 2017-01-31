@@ -1,0 +1,180 @@
+@import 'lib/include.all.less';
+@import 'common.css';
+
+.zd-contents {
+	position: relative;
+	@wrapper();
+	background-color: @color-background;
+}
+
+.gallery-banner-wrapper {
+	padding: 0px 2%;
+}
+.gallery-banner {
+	width: 100%;
+	height: 105px;
+	border-bottom: 1px solid @color-main-border;
+	border-left: 1px solid @color-main-border;
+	border-right:  1px solid @color-main-border;
+	text-align: left;
+	padding-left: 30px;
+
+}
+.gallery-banner>div {
+	display: inline-block;
+	vertical-align: middle;
+}
+.banner-logo {
+	padding-top: 22px;
+	margin-right: 25px;
+}
+.banner-img {
+	float: right;
+}
+.banner-text {
+	font-size: 20px;
+	padding-top: 22px;
+}
+.banner-text>span {
+	color: @color-brown;
+	font-weight: bold;
+}
+.gallery-navi-wrapper {
+	padding: 0px 2%;
+	margin-top: 40px;
+	padding-bottom: 30px;
+}
+.gallery-navi {
+	height: 50px;
+	vertical-align: top;
+}
+
+.gallery-navi>li {
+	display: inline-block;
+	vertical-align: top;
+	height: 100%;
+}
+.gallery-navi>li:nth-child(1),
+.gallery-navi>li:nth-child(2),
+.gallery-navi>li:nth-child(3) {
+	width: calc(~"100% /8");
+}
+.gallery-navi>li:nth-child(4) {
+	width: calc(~"(100% /8)*3");
+
+}
+.gallery-navi>li:nth-child(5) {
+	width: calc(~"(100% /8)*2");
+}
+.navi-input,
+.gallery-navi>li>select {
+	@fill();
+	border: 1px solid @color-main-border;
+	border-radius: 0px;
+
+}
+.navi-btn {
+	@fill();
+	color: white;
+	font-size: 16px;
+	line-height: 50px;
+	background-color: #aaa4a4;
+
+}
+.gallery-lists-wrapper {
+	padding: 0px 2%;
+	padding-bottom: 10;
+}
+
+/* 집 정보 리스트의 커먼 속성*/
+@gallery-list-height:930px;
+.gallery-list {
+	position: relative;
+	width: 100%;
+	/* 전체 리스트의 높이 (필수)*/
+	height: @gallery-list-height;
+	/*전체 넘치는 것을 보여줄지
+    overflow: hidden;*/
+}
+.gallery-list>ul {
+	@fill();
+	/*리스트들의 전체 크기
+    width: 1000% ;*/
+	/* 위치 고정하기 위해서
+    position: absolute;*/
+}
+.gallery-list>ul>li {
+	display: inline-block;
+	/*리스트의 실제 너비사이즈(필수)
+    width: @best-list-width;*/
+	width: 25%;
+	height: 300px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-bottom: 10px;
+}
+.gallery-list-form {
+	height: 100%;
+	position: relative;
+	padding-bottom: 20px;
+}
+
+.gallery-list-img {
+	background-size: cover;
+	/*리스트의 실제 너비사이즈(필수)
+    width: @best-list-width;*/
+	width: 100%;
+	height: calc(~"(100% / 3) * 2 ");
+	border: @color-main-border 1px solid;
+
+}
+
+.gallery-list-text {
+	/*리스트의 실제 너비사이즈(필수)
+    width: @best-list-width;*/
+	width: 100%;
+	height: calc(~"100%/3");
+	border: @color-main-border 1px solid;
+	border-top: none;
+	text-align: left;
+	padding: 10px 20px;
+	background-color: white;
+	color: @color-font-light;
+}
+.gallery-list-text>div {
+	padding: 3px 0px;
+}
+.gallery-list-desc>div {
+	display: inline-block;
+	border: solid 1px @color-main-border;
+	border-radius: 3px;
+	margin-right: 3px;
+}
+.gallery-list-title {
+	color: @color-font-main;
+}
+
+.gallery-list-favor {
+	position: absolute;
+	width: calc(~ "100% / 6" );
+	height: 30px;
+	top: calc(~"(100% / 3) * 2 ");
+	right: 0px;
+	transform: translateY(-146%);
+	color: white;
+	background-color: rgba(157, 148, 148, 0.8);
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+}
+.gallery-list-favor>div{
+	display: inline-block;
+	padding-right: 3px;
+	line-height: 30px;
+}
+
+/* 집 정보 리스트의 커먼 속성 End*/
+.gallery-pages-wrapper {
+	padding: 50px 2% 100px 2% ;
+}
+

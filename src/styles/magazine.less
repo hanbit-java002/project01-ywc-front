@@ -1,0 +1,67 @@
+@import 'lib/include.all.less';
+@import 'common.css';
+
+.zd-contents-wrapper {
+	@wrapper();
+	background-color: @color-background;
+}
+
+.zd-contents {
+	@wrapper-under();
+	padding: 0px 2%;
+}
+.event,
+.news,
+.diary,
+.interior-tip {
+	display: none;
+}
+
+
+.magazine-list {
+	padding: 50px 0px;
+}
+.magazine-list>li {
+	width: 100%;
+	height: 190px;
+	margin: 5px 0px;
+}
+.magazine-list>li>div {
+	display: inline-block;
+}
+.magazine-list-img {
+	width: 400px;
+	height: 100%;
+	background-size: cover;
+}
+.magazine-list-text {
+	width: calc(~"100% - 400px");
+	height: 100%;
+	text-align: left;
+	vertical-align: top;
+	padding: 20px 3%;
+	background-color: white;
+}
+.magazine-list-index {
+	color: @color-font-light;
+	font-size: 14px;
+	padding-bottom: 2px;
+}
+.magazine-list-title {
+	font-size: 18px;
+	line-height: 40px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid @color-main-border;
+}
+.magazine-list-desc {
+	color: @color-font-light;
+	font-size: 14px;
+}
+
+
+
+
+
+.common-active {
+	display: block;
+}

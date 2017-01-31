@@ -1,0 +1,163 @@
+{
+  "name": "pkjs-webapp-starter",
+  "version": "1.0.0",
+  "homepage": "http://pkjs.io/",
+  "license": "MIT",
+  "private": true,
+  "pkjs-configs": {
+    "directories": {
+      "archive": "archive",
+      "dist": "dist",
+      "src": "src"
+    },
+    "globals": {
+      "lang": "ko",
+
+      "community": [
+        {
+          "class": "curious-clicker",
+          "title": "궁금해요",
+          "subTitle": {
+            "titleImg": "img/index_icon_comm_qna.png",
+            "titleTitle": " 인테리어 무엇이든 물어보세요~",
+            "titleDesc1": "인테리어에 관한것이라면, 어떤 사소한 질문도 괜찮아요. 집닥과 집닥 파트너스의 전문가들이 속 시원히 알려드립니다.",
+            "titleDesc2": "나만 알고 있는 경험과 노하우가 있다면 도움이 필요한 분들에게 나누어 주세요."
+          }
+        },
+        {
+          "class": "myroom-clicker",
+          "title": "내방어때",
+          "subTitle": {
+            "titleImg": "img/index_icon_comm_photo.png",
+            "titleTitle": "나의 셀프 인테리어 이야기",
+            "titleDesc1": "혼자 보기 아까운, 정성과 애정이 가득 담긴 나만의 공간을 자랑하세요.",
+            "titleDesc2":"알려주고 싶은 인테리어 팁이나 노하우가 있다면 모두와 공유해 보세요."
+          }
+        },
+        {
+          "class": "review-clicker",
+          "title": "집닥후기",
+          "subTitle": {
+            "titleImg": "img/index_icon_comm_qna.png",
+            "titleTitle": " 인테리어 이렇게 했어요",
+            "titleDesc1": "인테리어를 하셨거나 준비중이신가요? 인테리어를 하며 경험하고 느낀 후기를 남겨주세요.",
+            "titleDesc2":"현재 인테리어를 하고 계신 분들, 혹은 앞으로 인테리어를 계획하고 계신 분들에게 많은 도움이 될거에요."
+          }
+        }
+      ],
+
+      "magazine":[
+        {
+          "class": "interior-tip-clicker",
+          "title":"인테리어 팁",
+          "subTitle": {
+            "titleImg": "img/index_icon_magazine_tip.png",
+            "titleTitle": " 인테리어 이렇게 했어요",
+            "titleDesc1": "인테리어를 하셨거나 준비중이신가요? 인테리어를 하며 경험하고 느낀 후기를 남겨주세요.",
+            "titleDesc2":"현재 인테리어를 하고 계신 분들, 혹은 앞으로 인테리어를 계획하고 계신 분들에게 많은 도움이 될거에요."
+          }
+        },
+        {
+          "class": "diary-clicker",
+          "title":"집닥맨 다이어리",
+          "subTitle": {
+            "titleImg": "img/index_icon_magazine_diary.png",
+            "titleTitle": "  집닥맨의 현장 다이어리",
+            "titleDesc1": "집닥맨이란? 고객님들의 공사가 진행되는 현장으로 직접 출동하여 진행 상황을 꼼꼼하게 점검해 드리는 집닥만의 특별한 전문가 팀입니다.",
+            "titleDesc2":"어떤 내용을 어떻게 점검하는지, 집닥맨과 함께 가보실까요?"
+          }
+        },
+        {
+          "class": "news-clicker",
+          "title":"집닥소식",
+          "subTitle": {
+            "titleImg": "img/index_icon_news.png",
+            "titleTitle": "집닥 NEWS",
+            "titleDesc1": "지금 집닥에서는 무슨 일이? 집닥에서 일어나는 새로운 소식들을 확인하세요.",
+            "titleDesc2":""
+          }
+        },
+        {
+          "class": "event-clicker",
+          "title": "집닥이벤트",
+          "subTitle": {
+            "titleImg": "img/index_icon_event.png",
+            "titleTitle": "집닥 EVENT",
+            "titleDesc1": "다양한 꿀혜택이 가득한 집닥의 이벤트를 만나보세요.",
+            "titleDesc2":""
+          }
+        }
+      ],
+      "partners" : [
+        {
+          "class": "partners-index-clicker",
+          "title": "파트너스 목록",
+          "subTitle": {
+            "titleImg": "img/index_icon_event.png",
+            "titleTitle": "집닥은 꼼꼼하게 파트너스를 선별합니다.",
+            "titleDesc1": "집닥의 파트너스들은 각 분야에서 전문적인 노하우를 갖춘 인테리어 전문 업체들로",
+            "titleDesc2": "아파트, 빌라, 주택, 각종 매장, 공연장, 공공기관 등 전 분야의 인테리어 시공이 가능합니다."
+          }
+        },
+        {
+          "class": "partners-inquire-clicker",
+          "title": "파트너스 문의"
+        }
+      ],
+      "estimate" : [
+        {
+          "class": "estimate-apply-clicker",
+          "title": "견적상담신청"
+        },
+        {
+          "class": "estimate-now-clicker",
+          "title": "견적상담신청현황"
+        },
+        {
+          "class": "estimate-confirm-clicker",
+          "title": "협의확인서현황"
+        }
+      ]
+
+    }
+  },
+  "scripts": {
+    "build": "gulp build",
+    "test": "gulp archive && mocha --reporter spec --timeout 5000"
+  },
+  "devDependencies": {
+    "@alrra/travis-scripts": "^1.1.1",
+    "archiver": "^0.21.0",
+    "bootstrap": "^3.0.0",
+    "clipboard": "^1.5.16",
+    "del": "^2.0.2",
+    "eslint": "^3.12.2",
+    "eslint-config-google": "^0.7.1",
+    "font-awesome": "4.7.0",
+    "glob": "^6.0.1",
+    "google-closure-library": "^20161201.0.0",
+    "gulp": "^3.9.1",
+    "gulp-all": "^1.1.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-compile-handlebars": "^0.6.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-header": "^1.2.2",
+    "gulp-html-minifier": "^0.1.8",
+    "gulp-less": "^3.3.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-nginxer": "^1.0.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.5.3",
+    "gulp-uglify": "^2.0.0",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.1.1",
+    "jquery-hammerjs": "^2.0.0",
+    "normalize.css": "3.0.3",
+    "pump": "^1.0.1",
+    "requirejs": "^2.3.2",
+    "run-sequence": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

@@ -1,0 +1,11 @@
+<div class="header-details-bar-wrapper">
+	<div class="header-details-bar">
+		<ul>
+			{{#each (getObj pageId)}}
+			<li class="{{class}} {{#if @first}}header-details-bar-active{{/if}}">
+				{{title}}
+			</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>
