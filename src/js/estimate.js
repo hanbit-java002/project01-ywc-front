@@ -188,7 +188,7 @@ require([
 	});
 	var adder=260;
 	var listResult=0;
-
+/* 스텝4 슬라이드*/
 	$(".arrow-left").on("click", function() {
 		if (listResult+adder >= 0) {
 			listResult=0;
@@ -205,7 +205,6 @@ require([
 		if ( -(lastPosition-viewLength) >= listResult-adder ) {
 			listResult=-(lastPosition-viewLength);
 			$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
-
 			return;
 		}
 		listResult-=adder;

@@ -96,12 +96,44 @@ define([
 	});
 
 	/* 오른쪽 픽스 값*/
+	function popupCloseRemoveTime() {
+		$(".yellow-layer").remove();
+		$(".zd-popup").remove();
+	}
+	function popupClose() {
+		$(".zd-popup").animate({
+			top: "-50%",
+		}, 200);
+		$(".yellow-layer").fadeOut(300);
+		$(".zd-popup").fadeOut(300);
+		setTimeout(popupCloseRemoveTime, 300);
+	}
+
+	function popupOpen(layerName) {
+		$.ajax({
+			url: "layers/" + layerName + ".html",
+			success: function(html) {
+				var blockLayerHTML = "<div class='yellow-layer ajax'></div>";
+				$("body").append(blockLayerHTML);
+				$("body").append(html);
+				$(".yellow-layer").fadeIn(200);
+				$(".zd-popup").fadeIn(200);
+				$(".zd-popup").animate({
+					top: "50%",
+				}, 300);
+				$(".popup-close-icon, .yellow-layer.ajax").on("click", function() {
+					popupClose();
+				});
+			},
+		});
+	}
+
 	$(".right-bar-contents>ul>li").on("click", function() {
 		if ((this.id) === "detail-estimate") {
 			$(location).attr("href", "gallery.html");
 		}
 		else if ((this.id) === "easy-estimate") {
-
+			popupOpen(this.id);
 		}
 	});
 

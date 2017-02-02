@@ -16,6 +16,17 @@ ul {
 	margin: 0;
 }
 
+input:focus {
+	outline: none;
+}
+textarea:focus {
+	outline: none;
+}
+
+select:focus {
+	outline: none;
+}
+
 .zd-container {
 	position: relative;
 	width: 100%;
@@ -292,6 +303,112 @@ ul {
 	margin-bottom: 50px;
 }
 
+/* 슬라이드 이미지*/
+
+.recommend-selects-contents {
+	width: 100%;
+	height: 290px;
+
+	position: relative;
+	overflow: hidden;
+}
+.recommend-selects-contents>ul {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1000%;
+	height: 100%;
+	text-align: left;
+}
+.recommend-selects-contents>ul>li {
+	position: relative;
+	width: 250px;
+	height: 100%;
+	display: inline-block;
+	margin-right: 10px;
+	border: solid 1px @color-main-border;
+	border-radius: 7px;
+}
+@recommend-img-height: 60%;
+.recommend-img {
+	height: @recommend-img-height;
+	width: 100%;
+	background-size:cover;
+	border-top-left-radius: 7px;
+	border-top-right-radius: 7px;
+}
+.recommend-text {
+	height: 100% - @recommend-img-height;
+	width: 100%;
+	padding: 15px;
+	font-size: 14px;
+	text-align: left;
+}
+.recommend-text-title,
+.recommend-text-addr {
+	width: 100%;
+	margin-bottom: 5px;
+
+}
+.recommend-text-title {
+	color: @color-mango;
+}
+.recommend-text-descs,
+.recommend-text-addr {
+	color: @color-font-light;
+}
+.recommend-text-desc {
+	border: solid 1px @color-main-border;
+	border-radius: 2px;
+	padding: 2px;
+	display: inline-block;
+	margin-right: 2px;
+}
+.recommend-favor {
+	position: absolute;
+	height: 30px;
+	font-size: 16px;
+	color: white;
+	background-color: rgba(233,40,10,0.5);
+	text-align: center;
+	right: 0px;
+	top:@recommend-img-height;
+	line-height: 30px;
+	transform: translateY( -100% );
+	padding: 0px 10px;
+}
+.recommend-checkbox {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top:10px;
+	right: 10px;
+
+}
+
+.recommend-arrow {
+	position: absolute;
+	top:@recommend-img-height - 2%;
+	transform: translateY( -100% );
+}
+
+
+
+/* 화살표*/
+.common-arrow {
+	width: 32px;
+	height: 32px;
+	background-color: rgba(255,255,255,0.8);
+	font-size: 25px;
+	border-radius: 16px;
+	color: @color-font-light;
+}
+.arrow-left {
+	left: 10px;
+}
+.arrow-right {
+	right: 10px;
+}
 
 /*하단 페이지 넘기기*/
 
@@ -508,6 +625,7 @@ footer {
 	position: relative;
 	text-align: center;
 	font-size: 12px;
+	cursor: pointer;
 }
 #detail-estimate {
 	background-color: @color-mango;
@@ -522,6 +640,7 @@ footer {
 	background-color: white;
 	padding: 12px 0px;
 	border: 1px @color-mango solid;
+
 }
 #easy-estimate>div {
 	color: @color-mango;
@@ -541,6 +660,139 @@ footer {
 }
 
 
+/* 픽스드 간편 견적 신청*/
+/* 인풋 스타일*/
+.easy-estimate-body {
+	position: relative;
+	padding-bottom: 60px;
+}
+.easy-estimate-body>div {
+	margin-bottom: 5px;
+
+}
+.estimate-form {
+	border-color: @color-main-border;
+	padding: 2px 3px;
+	font-size: 16px;
+	border-radius: 3px;
+	margin-bottom: 5px;
+}
+.estimate-form:focus {
+	color: @color-mango;
+	border: solid 1px @color-mango;
+}
+
+
+.yellow-layer {
+	display: none;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top:0px;
+	left: 0px;
+	background-color: rgba(255,180,0,0.8);
+}
+.yellow-layer.ajax {
+	z-index: 50;
+}
+
+.zd-popup {
+	position: fixed;
+	display: none;
+	top: -100%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+}
+.easy-estimate-content {
+	background-color: white;
+	border: solid 1px #702600;
+	width: 900px;
+	min-height: 450px;
+	padding: 20px;
+}
+.easy-estimate-user {
+	width: 100%;
+}
+.easy-estimate-user>div {
+	display: inline-block;
+}
+.easy-estimate-title {
+	font-size: 18px;
+	margin-bottom: 30px;
+}
+.easy-estimate-name {
+	width: 30%;
+	height: 40px;
+}
+.easy-estimate-name-input {
+	width: 100%;
+	height: 100%;
+}
+.easy-estimate-phone {
+	height: 40px;
+	width: 70%;
+}
+
+.easy-estimate-phone-form {
+	height: 100%;
+	width: 20%;
+	display: inline-block;
+}
+.easy-estimate-phone-form:first-child {
+	margin-left: 30px;
+}
+.easy-estimate-textarea {
+	width: 100%;
+	min-height: 167px;
+	resize: vertical;
+}
+
+
+
+.estimate-user-privacy>div,
+.estimate-user-privacy>input{
+	display: inline-block;
+}
+.estimate-user-for3>div,
+.estimate-user-for3>input{
+	display: inline-block;
+}
+.estimate-user-bottom-title {
+	color: @color-font-main;
+	padding-right: 10px;
+}
+.estimate-user-more {
+	color: @color-font-light;
+}
+
+.easy-estimate-btn {
+	text-align: center;
+	position: absolute;
+	width: 15%;
+	height: 40px;
+	background-color: @color-mango;
+	color: white;
+	right: 0px;
+	bottom: 0px;
+	font-size: 15px;
+	line-height: 40px;
+
+}
+.zipdoc-girl {
+	position: absolute;
+	left: -137px;
+	top: -170px;
+}
+.popup-close-icon {
+	position: absolute;
+	right: 0;
+	top: -86px;
+	font-size: 85px;
+	color: @color-brown;
+	line-height: 1;
+	cursor: pointer;
+}
 
 /* 메디아*/
 @media screen and (max-width:1200px)  {
