@@ -186,28 +186,4 @@ require([
 		step4Next();
 		nextStepProgress();
 	});
-	var adder=260;
-	var listResult=0;
-/* 스텝4 슬라이드*/
-	$(".arrow-left").on("click", function() {
-		if (listResult+adder >= 0) {
-			listResult=0;
-			$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
-			return;
-		}
-		listResult+=adder;
-		$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
-	});
-
-	$(".arrow-right").on("click", function() {
-		var lastPosition = ($(".recommend-selects-contents>ul>li:last-child").position().left+250);
-		var viewLength = $(".recommend-selects-contents").outerWidth();
-		if ( -(lastPosition-viewLength) >= listResult-adder ) {
-			listResult=-(lastPosition-viewLength);
-			$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
-			return;
-		}
-		listResult-=adder;
-		$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
-	});
 });

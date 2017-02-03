@@ -136,6 +136,30 @@ define([
 			popupOpen(this.id);
 		}
 	});
+	/* 슬라이드*/
+	var adder=260;
+	var listResult=0;
+	$(".arrow-left").on("click", function() {
+		if (listResult+adder >= 0) {
+			listResult=0;
+			$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
+			return;
+		}
+		listResult+=adder;
+		$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
+	});
+
+	$(".arrow-right").on("click", function() {
+		var lastPosition = ($(".recommend-selects-contents>ul>li:last-child").position().left+250);
+		var viewLength = $(".recommend-selects-contents").outerWidth();
+		if ( -(lastPosition-viewLength) >= listResult-adder ) {
+			listResult=-(lastPosition-viewLength);
+			$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
+			return;
+		}
+		listResult-=adder;
+		$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
+	});
 
 	mainLogoEnter();
 	mainLogoLeave();
