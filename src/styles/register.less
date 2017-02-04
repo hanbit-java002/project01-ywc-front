@@ -1,0 +1,85 @@
+@import 'lib/include.all.less';
+@import 'common.css';
+.register-wrapper {
+	@wrapper();
+	background: @color-background;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+.resister {
+	width: 450px;
+	@margin-auto-width();
+
+}
+.register-logo {
+	margin-right: auto;
+	margin-bottom: 30px;
+}
+.resister-title {
+	font-size: 20px;
+	margin-bottom: 15px;
+}
+.resister-others {
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid @color-main-border;
+}
+.resister-others>li {
+	vertical-align: middle;
+	display: inline-block;
+	margin-right: 5px;
+}
+.others-title {
+	font-size: 14px;
+	color: @color-font-light;
+}
+.others-company{
+	font-size: 30px;
+	width: 42px;
+	height: 40px;
+	color: white;
+	background-color: #E1E1E1;
+}
+.register-user>div>input,
+.register-user>input {
+	border: 1px solid @color-main-border;
+	width: 100%;
+	height: 52px;
+	padding: 10px;
+}
+.register-user>div>input:focus,
+.register-user>input:focus {
+	outline: none;
+	border: 1px solid @color-mango;
+	color: @color-mango;
+}
+.resister-btn {
+	width: 100%;
+	background-color: #9d9494;
+	height: 40px;
+	color: white;
+	line-height: 40px;
+	font-size: 16px;
+	margin-top: 15px;
+	cursor: pointer;
+}
+.resister-privacy {
+	text-align: left;
+}
+.resister-user-info,
+.resister-user-pw,
+.resister-user-id {
+	width: 100%;
+	margin-bottom:15px ;
+}
+.estimate-user-for3,
+.estimate-user-privacy {
+	position: relative;
+}
+
+.resister-privacy>.estimate-user-for3>.estimate-user-more ,
+.resister-privacy>.estimate-user-privacy>.estimate-user-more{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}

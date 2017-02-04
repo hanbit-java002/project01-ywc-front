@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<title>Zip-Doc</title>
+
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="stylesheet" href="plugins/normalize/normalize.css">
+	<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/register.css">
+	<script src="plugins/modernizr/modernizr-2.8.3.min.js"></script>
+</head>
+	<body>
+		<section class="register-wrapper">
+			<div class="resister">
+				<div class="header-info-logo register-logo" >
+					<img class="main-logo" src="img/img_zipdoc_logo.png">
+				</div>
+				<div class="resister-title">회원가입</div>
+				<ul  class="resister-others">
+					<li class="others-title">
+						SNS 계정으로 회원가입 :
+					</li>
+					<li class="others-company">
+						<i class="fa fa-google-plus"></i>
+					</li>
+					<li class="others-company">
+						까
+					</li>
+					<li class="others-company">
+						네
+					</li>
+					<li class="others-company">
+						<i class="fa fa-facebook"></i>
+					</li>
+				</ul>
+				<div class="register-user">
+					<input id="register-id" class="resister-user-id" type="text" placeholder="아이디(이메일)">
+					<div class="resister-user-pw">
+						<input id="register-pw"  type="text" placeholder="비밀번호 영문숫자 조합">
+						<input id="register-pw-Cfm" type="text" placeholder="비밀번호확인">
+					</div>
+					<div class="resister-user-info">
+						<input id="register-name" type="text" placeholder="이름">
+						<input id="register-nickname" type="text" placeholder="닉네임">
+						<input id="register-phone" type="text" placeholder="휴대전화번호(-없이숫자만)">
+					</div>
+
+					<div class="resister-privacy">
+						<div class="estimate-user-privacy">
+							<input id="estimate-user-privacy-checker"  type="checkbox">
+							<div class="estimate-user-bottom-title">개인정보처리방침에 동의합니다. </div>
+							<div class="estimate-user-more" id="estimate-user-privacy">자세히보기 <i class="fa fa-angle-down"></i></div>
+						</div>
+						<div class="estimate-user-for3">
+							<input id="estimate-user-for3-checker" type="checkbox">
+							<div class="estimate-user-bottom-title">제 3자 제공에 동의합니다. </div>
+							<div class="estimate-user-more" id="estimate-user-for3">자세히보기 <i class="fa fa-angle-down"></i></div>
+						</div>
+					</div>
+					<div class="resister-btn">회원가입</div>
+				</div>
+
+			</div>
+		</section>
+		<script src="plugins/requirejs/require.min.js"></script>
+		<script src="js/require.config.js"></script>
+		<script src="js/register.js"></script>
+	</body>
+</html>
