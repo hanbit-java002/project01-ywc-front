@@ -32,7 +32,7 @@ select:focus {
 	width: 100%;
 	min-height: 100%;
 	padding-bottom: 331px;
-	padding-top: 160px;
+	padding-top: 161px;
 }
 .zd-contents {
 	position: relative;
@@ -343,6 +343,9 @@ select:focus {
 	padding: 15px;
 	font-size: 14px;
 	text-align: left;
+	background-color: white;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
 }
 .recommend-text-title,
 .recommend-text-addr {
@@ -390,6 +393,7 @@ select:focus {
 	position: absolute;
 	top:@recommend-img-height - 2%;
 	transform: translateY( -100% );
+	text-align: center;
 }
 
 /* 화살표*/
@@ -746,7 +750,12 @@ footer {
 	min-height: 167px;
 	resize: vertical;
 }
-
+.galpartners-more {
+	text-align: right;
+	color: @color-font-light;
+	padding: 10px 0px;
+	cursor: pointer;
+}
 
 
 .estimate-user-privacy>div,
