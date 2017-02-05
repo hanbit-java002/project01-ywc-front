@@ -1,6 +1,19 @@
 define([
 	"bootstrap",
 ], function() {
+	/* 상단 로그인 회원가입 고개센터*/
+	$(".header-info-list>ul>li").on("click", function() {
+		console.log("hello");
+		if ($(this).hasClass("login")) {
+			$(location).attr("href", "login.html");
+		}
+		else if ($(this).hasClass("register")) {
+			$(location).attr("href", "register.html");
+		}
+		else if ($(this).hasClass("customer-service")) {
+
+		}
+	});
 	/* 메뉴바 픽스드*/
 	function menuFixer() {
 		if (document.body.scrollTop>=117.99) {
