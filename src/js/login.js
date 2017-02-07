@@ -8,5 +8,4 @@ require([
 	$(".login-zipdoc-input>div>input").blur(function() {
 		$(".login-zipdoc-input>div>div").removeClass("active");
 	});
-	
 });
