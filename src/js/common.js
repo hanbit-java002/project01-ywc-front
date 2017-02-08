@@ -3,17 +3,35 @@ define([
 ], function() {
 	/* 상단 로그인 회원가입 고개센터*/
 	$(".header-info-list>ul>li").on("click", function() {
-		console.log("hello");
 		if ($(this).hasClass("login")) {
-			$(location).attr("href", "login.html");
+			location.href="login.html";
 		}
 		else if ($(this).hasClass("register")) {
-			$(location).attr("href", "register.html");
+			location.href="register.html";
+		}
+		else if ($(this).hasClass("logout")) {
+			$.ajax({
+				url: "/api/member/logout",
+				success: function(data) {
+					if (data.result === "ok") {
+						$(".logout").hide();
+						$(".mypage").hide();
+						$(".login").show();
+						$(".register").show();
+						alert("로그아웃 되셨습니다.");
+					}
+				},
+			});
+		}
+		else if ($(this).hasClass("mypage")) {
+
 		}
 		else if ($(this).hasClass("customer-service")) {
 
 		}
 	});
+	/* 로그아웃*/
+
 	/* 메뉴바 픽스드*/
 	function menuFixer() {
 		if (document.body.scrollTop>=117.99) {
@@ -64,29 +82,29 @@ define([
 	/* 메뉴바 링크들~~아직 갤러리만함*/
 	$(".header-menu>ul>li").on("click", function() {
 		if ($(this).hasClass("header-menu-gallery")) {
-			$(location).attr("href", "gallery.html");
+			location.href = "gallery.html";
 		}
 		else if ($(this).hasClass("header-menu-community")) {
-			$(location).attr("href", "comunity.html");
+			location.href = "comunity.html";
 		}
 		else if ($(this).hasClass("header-menu-magazine")) {
-			$(location).attr("href", "magazine.html");
+			location.href ="magazine.html";
 		}
 		else if ($(this).hasClass("header-menu-partners")) {
-			$(location).attr("href", "partners.html");
+			location.href ="partners.html";
 		}
 		else if ($(this).hasClass("header-menu-estimate")) {
-			$(location).attr("href", "estimate.html");
+			location.href ="estimate.html";
 		}
 		else if ($(this).hasClass("header-menu-store")) {
-			$(location).attr("href", "store.html");
+			location.href ="store.html";
 		}
 	});
 
 	/* 메뉴바 디테일스 */
 	$(".header-details>ul>li>ul>li>div").on("click", function() {
 		if($(this).hasClass("house-clicker")) {
-			$(location).attr("href", "gallery.html");
+			location.href = "gallery.html";
 			/* 파라미터를 받아서 하게끔 만들어야함*/
 			$("#select-type").val("title");
 		}
@@ -132,7 +150,7 @@ define([
 				$(".yellow-layer").fadeIn(200);
 				$(".zd-popup").fadeIn(200);
 				$(".zd-popup").animate({
-					top: "50%",
+					top: "200px",
 				}, 300);
 				$(".popup-close-icon, .yellow-layer.ajax").on("click", function() {
 					popupClose();
@@ -174,6 +192,27 @@ define([
 		$(".recommend-selects-contents>ul").animate({left: listResult+"px"});
 	});
 
+	function logedIncheck() {
+		$.ajax({
+			url: "/api/member/logedin",
+			success: function(data) {
+				if (data.result === "yes") {
+					$(".logout").show();
+					$(".mypage").show();
+					$(".login").hide();
+					$(".register").hide();
+				}
+				else {
+					$(".logout").hide();
+					$(".mypage").hide();
+					$(".login").show();
+					$(".register").show();
+				}
+			},
+		});
+	}
+
+	logedIncheck();
 	mainLogoEnter();
 	mainLogoLeave();
 	detailsEnter();

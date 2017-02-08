@@ -68,12 +68,13 @@
 	font-size: 12px;
 	cursor: pointer;
 }
+@focus-move:50px;
 .login-zipdoc-input-desc {
 	display: none;
 	position: absolute;
 	font-size: 11px;
 	right: 0px;
-	top: 44px;
+	top: 44px + @focus-move;
 	color: white;
 	background-color: @color-font-main;
 	z-index: 10;
