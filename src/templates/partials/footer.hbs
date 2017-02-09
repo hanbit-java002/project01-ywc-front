@@ -2,7 +2,7 @@
 	<div class="footer-reward">
 		<ul>
 			<li>
-				<div class="reward-img" style="background-image: url('/img/img_footer_circle_01.png')"></div>
+				<div class="reward-img" style="background-image: url('{{root}}/img/img_footer_circle_01.png')"></div>
 				<div class="reward-text">
 					<div class="reward-title">압도적인 시공수</div>
 					<div class="reward-details">1만명의 고객님이 인정한 집닥</div>
@@ -10,28 +10,28 @@
 
 			</li>
 			<li>
-				<div class="reward-img" style="background-image: url('/img/img_footer_circle_02.png')"></div>
+				<div class="reward-img" style="background-image: url('{{root}}/img/img_footer_circle_02.png')"></div>
 				<div class="reward-text">
 					<div class="reward-title">고객만족 서비스</div>
 					<div class="reward-details">고객님의 불만사항을 회피하지 않습니다</div>
 				</div>
 			</li>
 			<li>
-				<div class="reward-img" style="background-image: url('/img/img_footer_circle_03.png')"></div>
+				<div class="reward-img" style="background-image: url('{{root}}/img/img_footer_circle_03.png')"></div>
 				<div class="reward-text">
 					<div class="reward-title">체계적인 파트너 관리</div>
 					<div class="reward-details">집닥의 파트너스는 일반 시공업체와 다릅니다</div>
 				</div>
 			</li>
 			<li>
-				<div class="reward-img" style="background-image: url('/img/img_footer_circle_04.png')"></div>
+				<div class="reward-img" style="background-image: url('{{root}}/img/img_footer_circle_04.png')"></div>
 				<div class="reward-text">
 					<div class="reward-title">국내 대표	</div>
 					<div class="reward-details">2016 소비자 만족 지수 인테리어 부분 1위</div>
 				</div>
 			</li>
 			<li>
-				<div class="reward-img" style="background-image: url('/img/img_footer_circle_05.png')"></div>
+				<div class="reward-img" style="background-image: url('{{root}}/img/img_footer_circle_05.png')"></div>
 				<div class="reward-text">
 					<div class="reward-title">고객 맞춤 시스템</div>
 					<div class="reward-details">집닥맨 감리, 에스크로, 무이자 할부 혜택 제공닥</div>
@@ -51,8 +51,8 @@
 			<div class="footer-company-site-app">
 				<ul>
 					<li>앱다운로드</li>
-					<li><img src="img/img_appstore.png"></li>
-					<li><img src="img/img_googleplay.png"></li>
+					<li><img src="{{root}}/img/img_appstore.png"></li>
+					<li><img src="{{root}}/img/img_googleplay.png"></li>
 				</ul>
 			</div>
 		</div>
@@ -61,7 +61,7 @@
 		<div class="footer-company">
 			<ul>
 				<li>
-					<img src="img/img_footer_logo.png">
+					<img src="{{root}}/img/img_footer_logo.png">
 				</li>
 				<li>
 					<h4 class="h4">집닥(주)</h4>
@@ -94,8 +94,14 @@
 {{>fixed}}
 
 </div>
-<script src="plugins/requirejs/require.min.js"></script>
-<script src="js/require.config.js"></script>
-<script src="js/{{jsName}}.js"></script>
+<script>
+	var global= {
+		root: "{{root}}",
+	};
+
+</script>
+<script src="{{root}}/plugins/requirejs/require.min.js"></script>
+<script src="{{root}}/js/require.config.js"></script>
+<script src="{{root}}/js/{{jsName}}.js"></script>
 </body>
 </html>

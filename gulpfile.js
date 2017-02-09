@@ -204,8 +204,8 @@ gulp.task('html:static', function() {
 });
 
 gulp.task('html:dynamic', function() {
-    var options = {
-        batch: [dirs.src + '/templates/partials'],
+	var options = {
+		batch: [dirs.src + '/templates/partials'],
 		helpers: {
 			set: function(options) {
 				for (var attr in options.hash) {
@@ -219,10 +219,13 @@ gulp.task('html:dynamic', function() {
 				return this[key];
 			},
 			getMenuInfo: function(pageId, num, key) {
+				if (key === "titleImg") {
+					return global.root+"/"+this[pageId][num].subTitle[key];
+				}
 				return this[pageId][num].subTitle[key];
 			}
 		}
-    };
+	};
 
     return gulp.src([dirs.src + '/templates/**/*.hbs',
         '!' + dirs.src + '/templates/partials/**/*.hbs',
