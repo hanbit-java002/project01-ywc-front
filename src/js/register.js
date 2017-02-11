@@ -2,9 +2,9 @@ require([
 	"common",
 ], function() {
 	/* 회원가입*/
-	function registerSuccess() {
+	function registerSuccess(userId, userPw, userName, userNickname, userPhone) {
 		$.ajax({
-			url: "/api/member/register",
+			url: global.root+"/api/member/register",
 			method: "POST",
 			data: {
 				userId: userId,
@@ -16,7 +16,7 @@ require([
 			success: function(data) {
 				if (data.result==="ok") {
 					alert(userId+"님 반갑습니다.");
-					location.href = "login.html";
+					location.href = global.root+"/"+"login.html";
 				}
 				else {
 					alert("정상적으로 가입되지 않았습니다.");
@@ -34,7 +34,7 @@ require([
 		var userName =$("#register-name").val();
 		var userNickname =$("#register-nickname").val();
 		var userPhone =$("#register-phone").val();
-
+		console.log(userId);
 		if (userId === undefined || userId ==="") {
 			alert("아이디가 입력하세요.");
 		}
@@ -51,7 +51,7 @@ require([
 			alert("핸드폰번호를 입력하세요.");
 		}
 		else {
-			registerSuccess();
+			registerSuccess(userId, userPw, userName, userNickname, userPhone);
 		}
 	});
 });

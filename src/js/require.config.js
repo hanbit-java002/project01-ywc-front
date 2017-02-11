@@ -2,12 +2,11 @@ require.config({
     baseUrl: global.root,
 
     paths: {
-        "async"         : "js/plugins/requirejs/async",
+        "async"         : "plugins/requirejs/async",
 
-        "jquery"        : "js/plugins/jquery/jquery.min",
-        "bootstrap"     : "js/plugins/bootstrap/js/bootstrap.min",
-        "clipboard"     : "js/plugins/clipboard/clipboard.min",
-
+        "jquery"        : "plugins/jquery/jquery.min",
+        "bootstrap"     : "plugins/bootstrap/js/bootstrap.min",
+        "clipboard"     : "plugins/clipboard/clipboard.min",
         "common"        : "js/common",
     },
 

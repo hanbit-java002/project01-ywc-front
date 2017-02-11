@@ -5,23 +5,24 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-	<title>Zip-Doc</title>
+	<title>{{title}}</title>
 
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<link rel="stylesheet" href="plugins/normalize/normalize.css">
-	<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/register.css">
-	<script src="plugins/modernizr/modernizr-2.8.3.min.js"></script>
+	<link rel="apple-touch-icon" href="{{root}}/apple-touch-icon.png">
+	<link rel="stylesheet" href="{{root}}/plugins/normalize/normalize.css">
+	<link rel="stylesheet" href="{{root}}/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{root}}/plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{root}}/css/register.css">
+	<script src="{{root}}/plugins/modernizr/modernizr-2.8.3.min.js"></script>
 </head>
-	<body>
+
+<body>
 		<section class="register-wrapper">
 			<div class="resister">
 				<div class="header-info-logo register-logo" >
-					<img class="main-logo" src="img/img_zipdoc_logo.png">
+					<img class="main-logo" src="{{root}}/img/img_zipdoc_logo.png">
 				</div>
 				<div class="resister-title">회원가입</div>
 				<ul  class="resister-others">
@@ -70,8 +71,15 @@
 
 			</div>
 		</section>
-		<script src="plugins/requirejs/require.min.js"></script>
-		<script src="js/require.config.js"></script>
-		<script src="js/register.js"></script>
-	</body>
+		<script>
+			var global= {
+				root: "{{root}}",
+			};
+
+		</script>
+		<script src="{{root}}/plugins/requirejs/require.min.js"></script>
+		<script src="{{root}}/js/require.config.js"></script>
+		<script src="{{root}}/js/register.js"></script>
+</body>
 </html>
+

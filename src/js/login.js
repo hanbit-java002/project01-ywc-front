@@ -26,7 +26,7 @@ require([
 		}
 		else {
 			$.ajax({
-				url: "/api/member/login",
+				url: global.root+"/api/member/login",
 				method: "POST",
 				data: {
 					userId: userId,
@@ -35,7 +35,7 @@ require([
 				success: function(data) {
 					if (data.result ==="ok") {
 						alert(userId+"로 로그인되셨습니다.");
-						location.href="index.html";
+						location.href=global.root+"/"+"index.html";
 					}
 					else {
 						alert("회원정보가 일치하지 않습니다.");

@@ -220,7 +220,7 @@ gulp.task('html:dynamic', function() {
 			},
 			getMenuInfo: function(pageId, num, key) {
 				if (key === "titleImg") {
-					return global.root+"/"+this[pageId][num].subTitle[key];
+					return this[pageId][num].subTitle[key];
 				}
 				return this[pageId][num].subTitle[key];
 			}

@@ -4,14 +4,14 @@ define([
 	/* 상단 로그인 회원가입 고개센터*/
 	$(".header-info-list>ul>li").on("click", function() {
 		if ($(this).hasClass("login")) {
-			location.href="login.html";
+			location.href=global.root+"/login.html";
 		}
 		else if ($(this).hasClass("register")) {
-			location.href="register.html";
+			location.href=global.root+"/register.html";
 		}
 		else if ($(this).hasClass("logout")) {
 			$.ajax({
-				url: "/api/member/logout",
+				url: global.root+"/api/member/logout",
 				success: function(data) {
 					if (data.result === "ok") {
 						$(".logout").hide();
@@ -49,12 +49,12 @@ define([
 	/* 메인로고 마우스오버 이벤트*/
 	function mainLogoEnter() {
 		$(".header-info-logo").mouseenter( function() {
-			$(".main-logo").attr("src", "img/img_zipdoc_logo_ani.gif");
+			$(".main-logo").attr("src", global.root+"/img/img_zipdoc_logo_ani.gif");
 		});
 	}
 	function mainLogoLeave() {
 		$(".header-info-logo").mouseleave( function() {
-			$(".main-logo").attr("src", "img/img_zipdoc_logo.png");
+			$(".main-logo").attr("src", global.root+"/img/img_zipdoc_logo.png");
 		});
 	}
 	/* 디테일스 마우스오버 이벤트*/
@@ -82,29 +82,29 @@ define([
 	/* 메뉴바 링크들~~아직 갤러리만함*/
 	$(".header-menu>ul>li").on("click", function() {
 		if ($(this).hasClass("header-menu-gallery")) {
-			location.href = "gallery.html";
+			location.href = global.root+"/html-gallery"+"/gallery.html";
 		}
 		else if ($(this).hasClass("header-menu-community")) {
-			location.href = "comunity.html";
+			location.href = global.root+"/comunity.html";
 		}
 		else if ($(this).hasClass("header-menu-magazine")) {
-			location.href ="magazine.html";
+			location.href =global.root+"/magazine.html";
 		}
 		else if ($(this).hasClass("header-menu-partners")) {
-			location.href ="partners.html";
+			location.href =global.root+"/partners.html";
 		}
 		else if ($(this).hasClass("header-menu-estimate")) {
-			location.href ="estimate.html";
+			location.href =global.root+"/estimate.html";
 		}
 		else if ($(this).hasClass("header-menu-store")) {
-			location.href ="store.html";
+			location.href =global.root+"/store.html";
 		}
 	});
 
 	/* 메뉴바 디테일스 */
 	$(".header-details>ul>li>ul>li>div").on("click", function() {
 		if($(this).hasClass("house-clicker")) {
-			location.href = "gallery.html";
+			location.href = global.root+"/gallery.html";
 			/* 파라미터를 받아서 하게끔 만들어야함*/
 			$("#select-type").val("title");
 		}
@@ -118,7 +118,7 @@ define([
 
 	/* 로고클릭시 메인페이지 가기*/
 	$(".main-logo").on("click", function() {
-			$(location).attr("href", "/");
+		location.href = global.root+"/index.html";
 	});
 	/* 헤더 디테일스바 색상변경*/
 	$(".header-details-bar>ul>li").on("click", function() {
@@ -139,10 +139,9 @@ define([
 		$(".zd-popup").fadeOut(300);
 		setTimeout(popupCloseRemoveTime, 300);
 	}
-
 	function popupOpen(layerName) {
 		$.ajax({
-			url: "layers/" + layerName + ".html",
+			url: global.root+"/"+"layers/" + layerName + ".html",
 			success: function(html) {
 				var blockLayerHTML = "<div class='yellow-layer ajax'></div>";
 				$("body").append(blockLayerHTML);
@@ -152,6 +151,7 @@ define([
 				$(".zd-popup").animate({
 					top: "200px",
 				}, 300);
+				zipdocGirl();
 				$(".popup-close-icon, .yellow-layer.ajax").on("click", function() {
 					popupClose();
 				});
@@ -161,7 +161,7 @@ define([
 
 	$(".right-bar-contents>ul>li").on("click", function() {
 		if ((this.id) === "detail-estimate") {
-			$(location).attr("href", "gallery.html");
+			location.href = global.root+"/html-gallery"+"/gallery.html";
 		}
 		else if ((this.id) === "easy-estimate") {
 			popupOpen(this.id);
@@ -194,7 +194,7 @@ define([
 
 	function logedIncheck() {
 		$.ajax({
-			url: "/api/member/logedin",
+			url: global.root+"/api/member/logedin",
 			success: function(data) {
 				if (data.result === "yes") {
 					$(".logout").show();
@@ -210,6 +210,9 @@ define([
 				}
 			},
 		});
+	}
+	function zipdocGirl() {
+		$(".zipdoc-girl").attr("src", global.root+"/img/img_modal_bg_character.png");
 	}
 
 	logedIncheck();
