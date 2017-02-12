@@ -104,15 +104,40 @@ define([
 	/* 메뉴바 디테일스 */
 	$(".header-details>ul>li>ul>li>div").on("click", function() {
 		if($(this).hasClass("house-clicker")) {
-			location.href = global.root+"/gallery.html";
-			/* 파라미터를 받아서 하게끔 만들어야함*/
-			$("#select-type").val("title");
+			$.ajax({
+				url: global.root+"/api/header/setdetails",
+				data: {
+					headerDetails: "house",
+				},
+				error: function(jqXHR) {
+					alert(jqXHR.responseJSON.message);
+				},
+			});
+			location.href = global.root+"/html-gallery/gallery.html";
 		}
 		else if($(this).hasClass("commercial-clicker")) {
-
+			$.ajax({
+				url: global.root+"/api/header/setdetails",
+				data: {
+					headerDetails: "commercial",
+				},
+				error: function(jqXHR) {
+					alert(jqXHR.responseJSON.message);
+				},
+			});
+			location.href = global.root+"/html-gallery/gallery.html";
 		}
 		else if($(this).hasClass("partial-clicker")) {
-
+			$.ajax({
+				url: global.root+"/api/header/setdetails",
+				data: {
+					headerDetails: "partial",
+				},
+				error: function(jqXHR) {
+					alert(jqXHR.responseJSON.message);
+				},
+			});
+			location.href = global.root+"/html-gallery/gallery.html";
 		}
 	});
 
