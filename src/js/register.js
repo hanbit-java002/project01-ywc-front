@@ -34,11 +34,15 @@ require([
 		var userName =$("#register-name").val();
 		var userNickname =$("#register-nickname").val();
 		var userPhone =$("#register-phone").val();
-		console.log(userId);
+
+		var idCfm = /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/;
+		var pwCfm = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/;
+		var phoneCfm = /^0[1][01689]{3}\d{4}\d{4}/;
+
 		if (userId === undefined || userId ==="") {
 			alert("아이디가 입력하세요.");
 		}
-		else if (userPw === undefined || userId ==="") {
+		else if (userPw === undefined || userPw ==="") {
 			alert("비밀번호가 입력하세요.");
 		}
 		else if (userName === undefined || userName ==="") {
@@ -49,6 +53,15 @@ require([
 		}
 		else if (userPhone === undefined || userPhone ==="") {
 			alert("핸드폰번호를 입력하세요.");
+		}
+		else if (!idCfm.test(userId)) {
+			alert("아이디를 다시 입력하세요.");
+		}
+		else if (!idCfm.test(userId)) {
+			alert("아이디를 다시 입력하세요.");
+		}
+		else if (!idCfm.test(userId)) {
+			alert("아이디를 다시 입력하세요.");
 		}
 		else {
 			registerSuccess(userId, userPw, userName, userNickname, userPhone);

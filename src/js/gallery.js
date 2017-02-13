@@ -1,34 +1,12 @@
 require([
 	"common",
 ], function() {
-	$.ajax({
-		url: global.root+"/api/header/getdetails",
-		success: function(data) {
-			if (data.result ==="") {
-				return;
-			}
-			else if (data.result === "house") {
-				$("#select-space").val("주거공간").attr("selected", "selected");
-			}
-			else if (data.result === "commercial") {
-				$("#select-space").val("상업공간").attr("selected", "selected");
-			}
-			else if (data.result === "partial") {
-				$("#select-space").val("부분시공").attr("selected", "selected");
-			}
-		},
-	});
-	$(".gallery-list>ul>li").on("click", function() {
-		location.href = global.root+"/html-gallery/gallery-details.html";
-	});
 	/* 셀렉트 박스들*/
-	var spaceSelected=$("#select-space>option:selected").val();
-	function spaseSelectInit() {
-		spaceSelected=$("#select-space>option:selected").val();
-		if ("--공간선택--" === spaceSelected) {
+	function spaceSelectInit(id) {
+		if (id === "all") {
 			$("#select-space-desc").html("<option>--주거선택--</option>");
 		}
-		else if ( "주거공간" === spaceSelected) {
+		else if ( id === "house") {
 			$("#select-space-desc").html("" +
 				"<option>--주거선택--</option>" +
 				"<option >아파트</option>" +
@@ -36,7 +14,7 @@ require([
 				"<option >주택</option>" +
 				"<option >원룸</option>");
 		}
-		else if ( "상업공간" === spaceSelected) {
+		else if ( id === "commercial") {
 			$("#select-space-desc").html("" +
 				"<option>--주거선택--</option>" +
 				"<option >사무실</option>" +
@@ -47,7 +25,7 @@ require([
 				"<option >숙박/병원</option>" +
 				"<option >기타</option>");
 		}
-		else if ( "부분시공" === spaceSelected) {
+		else if ( id === "partial") {
 			$("#select-space-desc").html("" +
 				"<option>--주거선택--</option>" +
 				"<option >도배/장판</option>" +
@@ -57,8 +35,22 @@ require([
 				"<option >기타</option>");
 		}
 	}
-	$("#select-space").on("change", function() {
-		spaseSelectInit();
+
+	/* 초기 스프링에서 설정해준 값 넘겨 받기*/
+	$.ajax({
+		url: global.root+"/api/header/getdetails",
+		success: function(data) {
+				$("#select-space").val(data.result);
+				$(".curious-clicker").addClass("header-details-bar-active");
+		},
 	});
-	spaseSelectInit();
+
+	/* 갤러리 리스트 이동*/
+	$(".gallery-list>ul>li").on("click", function() {
+		location.href = global.root+"/html-gallery/gallery-details.html";
+	});
+
+	$("#select-space").on("change", function() {
+		spaceSelectInit($(this).val());
+	});
 });

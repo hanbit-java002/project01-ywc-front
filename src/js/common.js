@@ -79,65 +79,97 @@ define([
 			$(".header-details").fadeOut(10);
 		});
 	}
-	/* 메뉴바 링크들~~아직 갤러리만함*/
+
+	function setHeaderDetails(id) {
+		$.ajax({
+			url: global.root+"/api/header/setdetails",
+			data: {
+				headerDetails: id,
+			},
+			error: function(jqXHR) {
+				alert(jqXHR.responseJSON.message);
+			},
+		});
+	}
+
+	/* 메뉴바 링크들*/
 	$(".header-menu>ul>li").on("click", function() {
 		if ($(this).hasClass("header-menu-gallery")) {
+			setHeaderDetails("all");
 			location.href = global.root+"/html-gallery"+"/gallery.html";
 		}
 		else if ($(this).hasClass("header-menu-community")) {
+			setHeaderDetails("curious");
 			location.href = global.root+"/comunity.html";
 		}
 		else if ($(this).hasClass("header-menu-magazine")) {
+			setHeaderDetails("interior-tip");
 			location.href =global.root+"/magazine.html";
 		}
 		else if ($(this).hasClass("header-menu-partners")) {
+			setHeaderDetails("partners-index");
 			location.href =global.root+"/partners.html";
 		}
 		else if ($(this).hasClass("header-menu-estimate")) {
+			setHeaderDetails("estimate-apply");
 			location.href =global.root+"/estimate.html";
 		}
 		else if ($(this).hasClass("header-menu-store")) {
+			setHeaderDetails("store");
 			location.href =global.root+"/store.html";
 		}
 	});
 
 	/* 메뉴바 디테일스 */
 	$(".header-details>ul>li>ul>li>div").on("click", function() {
-		if($(this).hasClass("house-clicker")) {
-			$.ajax({
-				url: global.root+"/api/header/setdetails",
-				data: {
-					headerDetails: "house",
-				},
-				error: function(jqXHR) {
-					alert(jqXHR.responseJSON.message);
-				},
-			});
+		setHeaderDetails(this.id);
+		if(this.id === "house") {
 			location.href = global.root+"/html-gallery/gallery.html";
 		}
-		else if($(this).hasClass("commercial-clicker")) {
-			$.ajax({
-				url: global.root+"/api/header/setdetails",
-				data: {
-					headerDetails: "commercial",
-				},
-				error: function(jqXHR) {
-					alert(jqXHR.responseJSON.message);
-				},
-			});
+		else if(this.id === "commercial") {
 			location.href = global.root+"/html-gallery/gallery.html";
 		}
-		else if($(this).hasClass("partial-clicker")) {
-			$.ajax({
-				url: global.root+"/api/header/setdetails",
-				data: {
-					headerDetails: "partial",
-				},
-				error: function(jqXHR) {
-					alert(jqXHR.responseJSON.message);
-				},
-			});
+		else if(this.id === "partial") {
 			location.href = global.root+"/html-gallery/gallery.html";
+		}
+		else if(this.id === "curious") {
+			location.href = global.root+"/comunity.html";
+		}
+		else if(this.id === "myroom") {
+			location.href = global.root+"/comunity.html";
+		}
+		else if(this.id === "review") {
+			location.href = global.root+"/comunity.html";
+		}
+		else if(this.id === "interior-tip") {
+			location.href = global.root+"/magazine.html";
+		}
+		else if(this.id === "diary") {
+			location.href = global.root+"/magazine.html";
+		}
+		else if(this.id === "news") {
+			location.href = global.root+"/magazine.html";
+		}
+		else if(this.id === "event") {
+			location.href = global.root+"/magazine.html";
+		}
+		else if(this.id === "partners-index") {
+			location.href = global.root+"/partners.html";
+		}
+		else if(this.id === "partners-inquire") {
+			location.href = global.root+"/partners.html";
+		}
+		else if(this.id === "estimate-apply") {
+			location.href = global.root+"/estimate.html";
+		}
+		else if(this.id === "estimate-now") {
+			location.href = global.root+"/estimate.html";
+		}
+		else if(this.id === "estimate-confirm") {
+			location.href = global.root+"/estimate.html";
+		}
+		else if(this.id === "store") {
+			location.href = global.root+"/store.html";
 		}
 	});
 
