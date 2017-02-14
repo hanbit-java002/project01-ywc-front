@@ -1,6 +1,13 @@
 define([
 	"bootstrap",
 ], function() {
+	/* test*/
+	function test() {
+		$(".test").on("click", function() {
+
+		});
+	}
+	test();
 	/* 상단 로그인 회원가입 고개센터*/
 	$(".header-info-list>ul>li").on("click", function() {
 		if ($(this).hasClass("login")) {
