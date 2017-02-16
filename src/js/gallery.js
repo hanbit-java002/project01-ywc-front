@@ -56,66 +56,99 @@ require([
 
 	/* 페이징 기법 초기 세팅*/
 	/* 페이지 갯수*/
-	var VIEWPAGES=5;
-	var VIEWITEMS= 12;
-	function itemPages(totalPages) {
-		var pages = Math.floor(totalPages/VIEWITEMS);
-		var pageLeft = totalPages % VIEWITEMS;
+	var VIEWITEMS = 12;
+	function totlaCounts() {
+		var totalCount = 0;
+		$.ajax({
+			url: global.root+"/api/gallery/totalcount",
+			success: function(data) {
+				totalCount=data;
+			},
+		});
+		return totalCount;
+	}
+	function totalPages() {
+		var totalCount=totlaCounts();
+		var pages = Math.floor(totalCount/ VIEWITEMS);
+		var pageLeft = totalCount % VIEWITEMS;
 		if (pageLeft>0) {
 			pages++;
 		}
 		return pages;
 	}
-	$.ajax({
-		url: global.root+"/api/gallery/count",
-		success: function(data){
-			var totalPages = parseInt(data.totalPages);
-			var pages=itemPages(totalPages);
-			var startIndex = pages;// 수정수정
-			$.ajax({
-				url: global.root+"/api/gallery/lists",
-				data:{
-					startIndex: startIndex,
-					viewItems: VIEWITEMS,
-				},
-				success: function(items){
-					var galleyHtml="";
-					for (var count = 0; count < items[count].length ; count++ ){
-						item=items[count];
-						galleyHtml+="<li>";
-						galleyHtml+="	<div class=\"gallery-list-form\">";
-						galleyHtml+="		<div class=\"gallery-list-img\" style=\"background-image: url('"+global.root+"/img/720x480_20170118160938280_e6JRX2pT9n.jpg')\">";
-						galleyHtml+="		</div>";
-						galleyHtml+="		<div class=\"gallery-list-text\">";
-						galleyHtml+="			<div class=\"gallery-list-title overflow-text\">item.galleryTitle</div>";
-						galleyHtml+="			<div class=\"list-addr overflow-text\">item.galleryAddr</div>";
-						galleyHtml+="			<div class=\"gallery-list-desc\">";
-						galleyHtml+="				<div class=\"list-room-size\">item.gallerySize+'평'</div>";
-						galleyHtml+="				<div class=\"list-room-type\">item.galleryType</div>";
-						galleyHtml+="				<div class=\"list-room-cost\">item.galleryCost+'만원'</div>";
-						galleyHtml+="			</div>";
-						galleyHtml+="		</div>";
-						galleyHtml+="		<div class=\"gallery-list-favor\">";
-						galleyHtml+="			<div class=\"fa fa-eye\" >item.galleryWatcher</div>";
-						galleyHtml+="			<div class=\"fa fa-heart-o\" >item.galleryFavor</div>";
-						galleyHtml+="			<div class=\"fa fa-paperclip\" >item.galleryClip</div>";
-						galleyHtml+="		</div>";
-						galleyHtml+="	</div>";
-						galleyHtml+="</li>";
-					}
-					$(".gallery-list>ul").html(galleyHtml);
+	function setGalleryLists(items) {
+		var galleyHtml="";
+		var img = "/img/720x480_20170118160938280_e6JRX2pT9n.jpg";
+		for (var count = 0; count < items.length; count++ ) {
+			var item = items[count];
+			galleyHtml+="<li>";
+			galleyHtml+="	<div class=\"gallery-list-form\">";
+			galleyHtml+="<div class=\"gallery-list-img\" style=\"background-image: url('"+global.root+img+"')\">";
+			galleyHtml+="		</div>";
+			galleyHtml+="		<div class=\"gallery-list-text\">";
+			galleyHtml+="			<div class=\"gallery-list-title overflow-text\">"+item.title+"</div>";
+			galleyHtml+="			<div class=\"list-addr overflow-text\">"+item.addr+"</div>";
+			galleyHtml+="			<div class=\"gallery-list-desc\">";
+			galleyHtml+="				<div class=\"list-room-size\">"+item.size+"평</div>";
+			galleyHtml+="				<div class=\"list-room-type\">"+item.type+"</div>";
+			galleyHtml+="				<div class=\"list-room-cost\">"+item.cost+"만원</div>";
+			galleyHtml+="			</div>";
+			galleyHtml+="		</div>";
+			galleyHtml+="		<div class=\"gallery-list-favor\">";
+			galleyHtml+="			<div class=\"fa fa-eye\" >"+item.watcher+"</div>";
+			galleyHtml+="			<div class=\"fa fa-heart-o\" >"+item.favor+"</div>";
+			galleyHtml+="			<div class=\"fa fa-paperclip\" >"+item.clip+"</div>";
+			galleyHtml+="		</div>";
+			galleyHtml+="	</div>";
+			galleyHtml+="</li>";
+		}
+		$(".gallery-list>ul").html(galleyHtml);
+		setPages();
+	}
 
-					var page = 1;
-					if (page = 1) {
-						
-					}
-					$(".pages").each(function () {
-						$(this).text();
-					});
+	function getGalleryData(pager) {
+		$.ajax({
+			url: global.root+"/api/gallery/lists",
+			data: {
+				pager: pager,
+				viewItems: VIEWITEMS,
+			},
+			success: function(items) {
+				console.log(items[1].addr);
+				setGalleryLists(items);
+			},
+		});
+	}
+	/* 페이지 세팅*/
+	var startPage =1;
+	function setPages() {
+		$(".pages").each(function() {
+			if (totalPages()>startPage) {
+				$(this).text(startPage++);
+			}
+			else {
+				return;
+			}
+		});
+	}
 
-
-				},
-			});
-		},
+	$(".pages").on("click", function() {
+		var pager = parseInt($(this).text());
+		getGalleryData(pager);
 	});
+	$(".page-navi").on("click", function() {
+		if ($(this).hasClass("page-leftest")) {
+
+		}
+		else if ($(this).hasClass("page-left")) {
+
+		}
+		else if ($(this).hasClass("page-rightest")) {
+
+		}
+		else if ($(this).hasClass("page-right")) {
+
+		}
+	});
+	getGalleryData(1);
 });
