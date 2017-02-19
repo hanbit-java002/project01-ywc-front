@@ -3,7 +3,7 @@ require([
 ], function() {
 	/* 셀렉트 박스들*/
 	function spaceSelectInit(id) {
-		if (id === "all") {
+		if (id === "gallery") {
 			$("#select-space-desc").html("<option>--주거선택--</option>");
 		}
 		else if ( id === "house") {
@@ -41,7 +41,7 @@ require([
 		url: global.root+"/api/header/getdetails",
 		success: function(data) {
 				$("#select-space").val(data.result);
-				$(".curious-clicker").addClass("header-details-bar-active");
+				spaceSelectInit(data.result);
 		},
 	});
 
@@ -55,27 +55,6 @@ require([
 	});
 
 	/* 페이징 기법 초기 세팅*/
-	/* 페이지 갯수*/
-	var VIEWITEMS = 12;
-	function totlaCounts() {
-		var totalCount = 0;
-		$.ajax({
-			url: global.root+"/api/gallery/totalcount",
-			success: function(data) {
-				totalCount=data;
-			},
-		});
-		return totalCount;
-	}
-	function totalPages() {
-		var totalCount=totlaCounts();
-		var pages = Math.floor(totalCount/ VIEWITEMS);
-		var pageLeft = totalCount % VIEWITEMS;
-		if (pageLeft>0) {
-			pages++;
-		}
-		return pages;
-	}
 	function setGalleryLists(items) {
 		var galleyHtml="";
 		var img = "/img/720x480_20170118160938280_e6JRX2pT9n.jpg";
@@ -103,9 +82,8 @@ require([
 			galleyHtml+="</li>";
 		}
 		$(".gallery-list>ul").html(galleyHtml);
-		setPages();
 	}
-
+	var VIEWITEMS = 12;
 	function getGalleryData(pager) {
 		$.ajax({
 			url: global.root+"/api/gallery/lists",
@@ -114,40 +92,103 @@ require([
 				viewItems: VIEWITEMS,
 			},
 			success: function(items) {
-				console.log(items[1].addr);
 				setGalleryLists(items);
 			},
 		});
 	}
+
+	function totalPages(totalCount) {
+		var pages = Math.floor(totalCount/ VIEWITEMS);
+		var pageLeft = totalCount % VIEWITEMS;
+		if (pageLeft>0) {
+			pages++;
+		}
+		return pages;
+	}
+
+	function totalCounts() {
+		$.ajax({
+			url: global.root+"/api/gallery/totalcount",
+			success: function(data) {
+				setPages(totalPages(parseInt(data)));
+			},
+		});
+	}
+	totalCounts();
+
 	/* 페이지 세팅*/
 	var startPage =1;
-	function setPages() {
+	var lastPage =0;
+	function setPages(totalPages) {
+		lastPage=totalPages;
+		var pageSetting = startPage;
+
+		if (pageSetting === 1) {
+			$(".page-leftest").hide();
+			$(".page-left").hide();
+		}
+		else if (pageSetting > 1) {
+			$(".page-leftest").show();
+			$(".page-left").show();
+		}
+
 		$(".pages").each(function() {
-			if (totalPages()>startPage) {
-				$(this).text(startPage++);
+			if (totalPages>=pageSetting) {
+				$(this).show();
+				$(this).text(pageSetting++);
 			}
-			else {
-				return;
+			else if (totalPages<pageSetting) {
+				$(this).hide();
 			}
 		});
+		if (totalPages>=pageSetting) {
+			$(".page-right").show();
+			$(".page-rightest").show();
+		}
+		else if (totalPages<pageSetting) {
+			$(".page-right").hide();
+			$(".page-rightest").hide();
+		}
 	}
 
 	$(".pages").on("click", function() {
+		$(".pages").removeClass("page-active");
+		$(this).addClass("page-active");
 		var pager = parseInt($(this).text());
 		getGalleryData(pager);
 	});
 	$(".page-navi").on("click", function() {
 		if ($(this).hasClass("page-leftest")) {
-
+			startPage = 1;
+			totalCounts();
+			getGalleryData(startPage);
+			$(".pages").removeClass("page-active");
+			$(".page-first").addClass("page-active");
 		}
 		else if ($(this).hasClass("page-left")) {
-
+			startPage-=5;
+			totalCounts();
+			var activePage = startPage;
+			getGalleryData(activePage+4);
+			$(".pages").removeClass("page-active");
+			$(".page-last").addClass("page-active");
 		}
 		else if ($(this).hasClass("page-rightest")) {
-
+			startPage = Math.floor(lastPage/5)*5+1;
+			console.log(startPage);
+			totalCounts();
+			getGalleryData(lastPage);
+			$(".pages").removeClass("page-active");
+			$(window).ready(function() {
+				$(".pages:contains('"+lastPage+"')").addClass("page-active");
+			});
 		}
 		else if ($(this).hasClass("page-right")) {
-
+			startPage+=5;
+			totalCounts();
+			getGalleryData(startPage);
+			$(".pages").removeClass("page-active");
+			$(".page-first").addClass("page-active");
 		}
 	});
 	getGalleryData(1);

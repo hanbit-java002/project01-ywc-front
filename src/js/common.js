@@ -1,13 +1,6 @@
 define([
 	"bootstrap",
 ], function() {
-	/* test*/
-	function test() {
-		$(".test").on("click", function() {
-
-		});
-	}
-	test();
 	/* 상단 로그인 회원가입 고개센터*/
 	$(".header-info-list>ul>li").on("click", function() {
 		if ($(this).hasClass("login")) {
@@ -102,7 +95,7 @@ define([
 	/* 메뉴바 링크들*/
 	$(".header-menu>ul>li").on("click", function() {
 		if ($(this).hasClass("header-menu-gallery")) {
-			setHeaderDetails("all");
+			setHeaderDetails("gallery");
 			location.href = global.root+"/html-gallery"+"/gallery.html";
 		}
 		else if ($(this).hasClass("header-menu-community")) {
