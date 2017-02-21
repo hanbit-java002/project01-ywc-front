@@ -31,7 +31,6 @@ select:focus {
 	position: relative;
 	width: 100%;
 	min-height: 100%;
-	padding-bottom: 331px;
 	padding-top: 161px;
 }
 .zd-contents {
@@ -60,6 +59,7 @@ select:focus {
 	text-align: center;
 	background-color: white;
 }
+
 .header-info {
 	width: @zipdoc-contents-width;
 	@margin-auto-width();
@@ -195,8 +195,8 @@ select:focus {
 	width: 100%/6;
 	height: 100%;
 	display: inline-block;
-	vertical-align: top;
 	border-right: solid 1px @color-main-border;
+	vertical-align: top;
 }
 .header-details>ul>li:last-child {
 	border-right: none;
@@ -272,7 +272,6 @@ select:focus {
 	margin-top: 21px;
 	border-right: solid 1px @color-main-border;
 	cursor: pointer;
-
 }
 .header-details-bar>ul>li:last-child {
 	border-right: none;
@@ -453,8 +452,6 @@ select:focus {
 
 //footer
 footer {
-	position: absolute;
-	bottom: 0px;
 	width: 100%;
 	text-align: center;
 }
@@ -502,25 +499,28 @@ footer {
 }
 .footer-company-site-wrapper {
 	width: 100%;
-	height: 60px;
 	background-color: white;
 	text-align: center;
 	@border-bottom();
 }
 .footer-company-site {
 	width: @zipdoc-contents-width;
-	height: 100%;
 	@margin-auto-width();
 	text-align: left;
 	position: relative;
-}
-.footer-company-site>div {
 	display: inline-block;
-	vertical-align: middle;
+}
+.footer-company-site>li{
+	display: inline-block;
+	padding: 10px 0px;
+	margin-top:auto ;
+	margin-bottom:auto ;
+
 }
 .footer-company-site-info {
-	@abs-vmiddle();
+	float: left;
 	left:0px;
+	transform: translateY(32%);
 }
 .footer-company-site-info>ul>li {
 	display: inline-block;
@@ -530,13 +530,17 @@ footer {
 	font-weight: bold;
 }
 .footer-company-site-app {
-	@abs-vmiddle();
+	float: right;
 	right:0px;
 
 }
+
 .footer-company-site-app>ul>li {
 	display: inline-block;
 	margin-left: 10px;
+}
+.footer-company-site-app>ul>li:first-child {
+	margin-left: 0px;
 }
 .footer-company-site-app>ul>li>img {
 	border: solid 1px @color-main-border;
@@ -556,13 +560,20 @@ footer {
 	height: 100%;
 	position: relative;
 	padding: 15px;
-}
-.footer-company>ul>li {
 	display: inline-block;
-	vertical-align: middle;
 }
+
 .footer-company>ul>li {
 	font-size: 12px;
+}
+.footer-company>ul>li:nth-child(1),
+.footer-company>ul>li:nth-child(2){
+
+	float: left;
+
+}
+.footer-company>ul>li:last-child {
+	float: right;
 }
 
 .h4 {
@@ -577,8 +588,6 @@ footer {
 	line-height: 2;
 }
 .footer-company>ul>li:nth-child(3) {
-	@abs-vmiddle();
-	right: 0;
 	padding-left: 15px;
 	border-left: solid 1px @color-main-border ;
 }
@@ -812,27 +821,20 @@ footer {
 	cursor: pointer;
 }
 
-/* 메디아*/
-@media screen and (max-width:1200px)  {
-	.header-details,
-	.footer-company,
-	.footer-company-site,
-	.header-info,
-	.header-menu {
-		width: 970px;
+@media screen and (max-width:870px){
+	.header-menu,
+	.header-info {
+		width: 96%;
 	}
 }
-@media screen and (max-width:990px)  {
-	.header-details,
-	.footer-company,
+@media screen and (max-width:800px){
 	.footer-company-site,
-	.header-info,
-	.header-menu {
-		width: 750px;
+	.footer-company{
+		width: 96%;
 	}
-	/*라인바꾸기*/
-	.footer-company>ul>li:nth-child(2) {
-		width: 414px;
+	.footer-company>ul>li:last-child,
+	.footer-company-site-app {
+		float: left;
 	}
+}
 
-}

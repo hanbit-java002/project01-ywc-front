@@ -9,8 +9,11 @@ require([
 			$(".header-details-bar>ul>li").removeClass("header-details-bar-active");
 			$("."+data.result).addClass("common-active");
 			$("."+data.result+"-clicker").addClass("header-details-bar-active");
+
+			id = "abc";
 		},
 	});
+
 	$(".header-details-bar>ul>li").on("click", function() {
 		$(".zd-contents-under>section").removeClass("common-active");
 		if($(this).hasClass("curious-clicker")) {

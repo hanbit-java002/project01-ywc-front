@@ -45,11 +45,6 @@ require([
 		},
 	});
 
-	/* 갤러리 리스트 이동*/
-	$(".gallery-list>ul>li").on("click", function() {
-		location.href = global.root+"/html-gallery/gallery-details.html";
-	});
-
 	$("#select-space").on("change", function() {
 		spaceSelectInit($(this).val());
 	});
@@ -62,7 +57,7 @@ require([
 			var item = items[count];
 			galleyHtml+="<li>";
 			galleyHtml+="	<div class=\"gallery-list-form\">";
-			galleyHtml+="<div class=\"gallery-list-img\" style=\"background-image: url('"+global.root+img+"')\">";
+			galleyHtml+="	<div class=\"gallery-list-img\" style=\"background-image: url('"+global.root+img+"')\">";
 			galleyHtml+="		</div>";
 			galleyHtml+="		<div class=\"gallery-list-text\">";
 			galleyHtml+="			<div class=\"gallery-list-title overflow-text\">"+item.title+"</div>";
@@ -118,9 +113,10 @@ require([
 
 	/* 페이지 세팅*/
 	var startPage =1;
-	var lastPage =0;
+	var totalPage =0;
+
 	function setPages(totalPages) {
-		lastPage=totalPages;
+		totalPage=totalPages;
 		var pageSetting = startPage;
 
 		if (pageSetting === 1) {
@@ -157,6 +153,7 @@ require([
 		var pager = parseInt($(this).text());
 		getGalleryData(pager);
 	});
+
 	$(".page-navi").on("click", function() {
 		if ($(this).hasClass("page-leftest")) {
 			startPage = 1;
@@ -174,13 +171,12 @@ require([
 			$(".page-last").addClass("page-active");
 		}
 		else if ($(this).hasClass("page-rightest")) {
-			startPage = Math.floor(lastPage/5)*5+1;
-			console.log(startPage);
 			totalCounts();
-			getGalleryData(lastPage);
+			startPage = Math.floor(totalPage/5)*5+1;
+			getGalleryData(totalPage);
 			$(".pages").removeClass("page-active");
 			$(window).ready(function() {
-				$(".pages:contains('"+lastPage+"')").addClass("page-active");
+				$(".pages:contains('"+totalPage+"')").addClass("page-active");
 			});
 		}
 		else if ($(this).hasClass("page-right")) {
@@ -191,5 +187,10 @@ require([
 			$(".page-first").addClass("page-active");
 		}
 	});
+	/* 갤러리 리스트 이동*/
+	$(".gallery-list>ul>li").on("click", function() {
+		location.href = global.root+"/html-gallery/gallery-details.html";
+	});
+
 	getGalleryData(1);
 });

@@ -1,7 +1,7 @@
 {{set root=".."}}
 {{> header title='Zip-Doc' cssName='gallery'}}
 <div class="zd-contents">
-	<section class="gallery-banner-wrapper wrapper" >
+	<section class="gallery-banner-wrapper" >
 		<div class="gallery-banner">
 			<div class="banner-logo">
 				<img src="{{root}}/img/img_kitchen_logo_f.png">
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="gallery-navi-wrapper wrapper" >
+	<section class="gallery-navi-wrapper" >
 		<ul class="gallery-navi">
 			<li>
 				<select id="select-space" title="space">
@@ -26,9 +26,9 @@
 				</select>
 			</li>
 			<li>
-			<select id="select-space-desc" title="desc">
-				<option selected="selected">--주거선택--</option>
-			</select>
+				<select id="select-space-desc" title="desc">
+					<option selected="selected">--주거선택--</option>
+				</select>
 			</li>
 			<li>
 				<select id="select-type" title="type">
@@ -38,22 +38,20 @@
 					<option val="partners">파트너스</option>
 				</select>
 			</li>
-			<li>
+			<li class="gallery-search-form">
 				<input class="form-control navi-input" type="text">
-			</li>
-			<li>
 				<div class="navi-btn">검색</div>
 			</li>
 		</ul>
 	</section>
-	<section class="gallery-lists-wrapper wrapper" >
+	<section class="gallery-lists-wrapper" >
 				<div class="gallery-list">
 					<ul>
 					</ul>
 				</div>
 		<!--............................................-->
 	</section>
-	<section class="gallery-pages-wrapper wrapper" >
+	<section class="gallery-pages-wrapper" >
 		<div class="common-pages">
 			<ul>
 				<li class="page-leftest page-navi">&lt;&lt;</li>

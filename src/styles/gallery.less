@@ -6,34 +6,45 @@
 	@wrapper();
 	background-color: @color-background;
 }
+.gallery-banner-wrapper,
+.gallery-navi-wrapper,
+.gallery-lists-wrapper,
+.gallery-pages-wrapper {
+	@wrapper-under();
+}
 
 .gallery-banner-wrapper {
 	padding: 0px 2%;
 }
 .gallery-banner {
 	width: 100%;
-	height: 105px;
+	text-align: left;
 	border-bottom: 1px solid @color-main-border;
 	border-left: 1px solid @color-main-border;
 	border-right:  1px solid @color-main-border;
-	text-align: left;
-	padding-left: 30px;
-
-}
-.gallery-banner>div {
+	background-color: white;
 	display: inline-block;
-	vertical-align: middle;
 }
+
 .banner-logo {
+	padding-left: 30px;
 	padding-top: 22px;
-	margin-right: 25px;
+	margin-right: 2%;
+	float: left;
+}
+.banner-logo>img {
+	width: 100%;
 }
 .banner-img {
 	float: right;
 }
+.banner-img>img {
+	width: 100%;
+}
 .banner-text {
 	font-size: 20px;
 	padding-top: 22px;
+	float: left;
 }
 .banner-text>span {
 	color: @color-brown;
@@ -45,14 +56,14 @@
 	padding-bottom: 30px;
 }
 .gallery-navi {
-	height: 50px;
 	vertical-align: top;
+	text-align: center;
 }
 
 .gallery-navi>li {
+	height: 50px;
 	display: inline-block;
 	vertical-align: top;
-	height: 100%;
 }
 .gallery-navi>li:nth-child(1),
 .gallery-navi>li:nth-child(2),
@@ -60,13 +71,22 @@
 	width: calc(~"100% /8");
 }
 .gallery-navi>li:nth-child(4) {
-	width: calc(~"(100% /8)*3");
+	width: calc(~"(100% /8)*5");
 
 }
-.gallery-navi>li:nth-child(5) {
-	width: calc(~"(100% /8)*2");
-}
 .navi-input,
+.navi-btn {
+	width: 50%;
+	height: 100%;
+	border: 1px solid @color-main-border;
+	border-radius: 0px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.gallery-navi>li.gallery-search-form {
+	@margin-auto-width();
+}
+
 .gallery-navi>li>select {
 	@fill();
 	border: 1px solid @color-main-border;
@@ -74,7 +94,6 @@
 
 }
 .navi-btn {
-	@fill();
 	color: white;
 	font-size: 16px;
 	line-height: 50px;
@@ -83,22 +102,17 @@
 }
 .gallery-lists-wrapper {
 	padding: 0px 2%;
-	padding-bottom: 10;
+	padding-bottom: 10px;
 }
 
 /* 집 정보 리스트의 커먼 속성*/
-@gallery-list-height:930px;
 .gallery-list {
 	position: relative;
 	width: 100%;
-	/* 전체 리스트의 높이 (필수)*/
-	height: @gallery-list-height;
-	/*전체 넘치는 것을 보여줄지
-    overflow: hidden;*/
 }
 .gallery-list>ul {
 	@fill();
-	text-align: left;
+	text-align: center;
 	/*리스트들의 전체 크기
     width: 1000% ;*/
 	/* 위치 고정하기 위해서
@@ -108,6 +122,7 @@
 	display: inline-block;
 	/*리스트의 실제 너비사이즈(필수)
     width: @best-list-width;*/
+	min-width: 270px;
 	width: 25%;
 	height: 300px;
 	padding-left: 5px;
@@ -185,3 +200,32 @@
 	padding: 50px 2% 100px 2% ;
 }
 
+@media screen and (max-width: 800px) {
+
+	.banner-text {
+		font-size: 12px;
+	}
+	.banner-logo {
+		width: 32%;
+		padding-left: 0px;
+	}
+	.gallery-banner-wrapper,
+	.gallery-navi-wrapper,
+	.gallery-lists-wrapper,
+	.gallery-pages-wrapper {
+		width: 98%;
+	}
+	.gallery-navi>li.gallery-search-form {
+		display: block;
+		width: 100%;
+		margin-top: 10px;
+	}
+	.gallery-navi>li:nth-child(1),
+	.gallery-navi>li:nth-child(2),
+	.gallery-navi>li:nth-child(3) {
+		width: calc(~"100% /3");
+	}
+	#right-bar {
+		display: none;
+	}
+}
