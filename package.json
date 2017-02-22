@@ -12,9 +12,35 @@
     },
     "globals": {
       "lang": "ko",
+      "gallery": [
+        {
+          "type" :"갤러리",
+          "id": "house",
+          "title": "주거공간",
+          "subTitle": {
+            "titleImg": "img/mobile_menu_gallery1.png"
+          }
+        },
+        {
+          "id": "commercial",
+          "title": "상업공간",
+          "subTitle": {
+            "titleImg": "img/mobile_menu_gallery_2.png"
+          }
+        },
+        {
+          "id": "partial",
+          "title": "부분시공",
+          "subTitle": {
+            "titleImg": "img/mobile_menu_gallery_3.png"
+          }
+        }
+      ],
 
       "community": [
         {
+          "type" : "커뮤니티",
+          "id": "curious",
           "class": "curious-clicker",
           "title": "궁금해요",
           "subTitle": {
@@ -25,6 +51,7 @@
           }
         },
         {
+          "id": "myroom",
           "class": "myroom-clicker",
           "title": "내방어때",
           "subTitle": {
@@ -35,6 +62,7 @@
           }
         },
         {
+          "id": "review",
           "class": "review-clicker",
           "title": "집닥후기",
           "subTitle": {
@@ -48,6 +76,8 @@
 
       "magazine":[
         {
+          "type" : "매거진",
+          "id": "interior-tip",
           "class": "interior-tip-clicker",
           "title":"인테리어 팁",
           "subTitle": {
@@ -58,6 +88,7 @@
           }
         },
         {
+          "id": "diary",
           "class": "diary-clicker",
           "title":"집닥맨 다이어리",
           "subTitle": {
@@ -68,6 +99,7 @@
           }
         },
         {
+          "id": "news",
           "class": "news-clicker",
           "title":"집닥소식",
           "subTitle": {
@@ -78,6 +110,7 @@
           }
         },
         {
+          "id": "event",
           "class": "event-clicker",
           "title": "집닥이벤트",
           "subTitle": {
@@ -90,6 +123,8 @@
       ],
       "partners" : [
         {
+          "type":"파트너스",
+          "id": "partners-index",
           "class": "partners-index-clicker",
           "title": "파트너스 목록",
           "subTitle": {
@@ -100,26 +135,45 @@
           }
         },
         {
+          "id": "partners-inquire",
           "class": "partners-inquire-clicker",
-          "title": "파트너스 문의"
+          "title": "파트너스 문의",
+          "subTitle":{
+            "titleImg": "img/mobile_menu_partners_2.png"
+          }
         }
       ],
       "estimate" : [
         {
+          "type": "견적상담",
+          "id": "estimate-apply",
           "class": "estimate-apply-clicker",
-          "title": "견적상담신청"
+          "title": "견적상담신청",
+          "subTitle":{
+            "titleImg": "img/mobile_menu_estima_1.pngm"
+          }
         },
         {
+          "id": "estimate-now",
           "class": "estimate-now-clicker",
-          "title": "견적상담신청현황"
+          "title": "견적상담신청현황",
+          "subTitle":{
+            "titleImg": "img/mobile_menu_estima_2.png"
+          }
         },
         {
+          "id": "estimate-confirm",
           "class": "estimate-confirm-clicker",
-          "title": "협의확인서현황"
+          "title": "협의확인서현황",
+          "subTitle":{
+            "titleImg": "img/mobile_menu_estima_3.png"
+          }
         }
       ],
       "store" : [
         {
+          "type":"스토어 βeta",
+          "id": "store",
           "subTitle": {
             "titleImg": "img/index_icon_store.png",
             "titleTitle": "집닥 스토어 OPEN!",

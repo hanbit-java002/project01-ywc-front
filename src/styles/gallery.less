@@ -122,8 +122,8 @@
 	display: inline-block;
 	/*리스트의 실제 너비사이즈(필수)
     width: @best-list-width;*/
-	min-width: 270px;
 	width: 25%;
+	min-width: 235px;
 	height: 300px;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -201,7 +201,6 @@
 }
 
 @media screen and (max-width: 800px) {
-
 	.banner-text {
 		font-size: 12px;
 	}
@@ -224,5 +223,8 @@
 	.gallery-navi>li:nth-child(2),
 	.gallery-navi>li:nth-child(3) {
 		width: calc(~"100% /3");
+	}
+	.gallery-list>ul>li {
+		min-width: 98%;
 	}
 }

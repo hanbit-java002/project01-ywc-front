@@ -192,6 +192,9 @@ require([
 			}
 		});
 	}
+	$(".header-info-bars-icon").on("click", function() {
+
+	});
 
 	getGalleryData(1);
 	totalCounts();
