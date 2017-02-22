@@ -27,8 +27,8 @@ require([
 			},
 		});
 	}
-	/* 회원가입*/
-	$(".resister-btn").on("click", function() {
+
+	function register() {
 		var userId =$("#register-id").val();
 		var userPw =$("#register-pw").val();
 		var userName =$("#register-name").val();
@@ -73,6 +73,16 @@ require([
 		}
 		else {
 			registerSuccess(userId, userPw, userName, userNickname, userPhone);
+		}
+	}
+	var ENTER_KEYCODE = 13;
+	/* 회원가입*/
+	$(".resister-btn").on("click", function() {
+		register();
+	});
+	$(document).on("keydown", function() {
+		if (event.keyCode === ENTER_KEYCODE) {
+			register();
 		}
 	});
 });

@@ -76,7 +76,13 @@ require([
 			galleyHtml+="	</div>";
 			galleyHtml+="</li>";
 		}
+
 		$(".gallery-list>ul").html(galleyHtml);
+
+		/* 갤러리 리스트 이동*/
+		$(".gallery-list>ul>li").on("click", function() {
+			location.href = global.root+"/html-gallery/gallery-details.html";
+		});
 	}
 	var VIEWITEMS = 12;
 	function getGalleryData(pager) {
@@ -100,25 +106,22 @@ require([
 		}
 		return pages;
 	}
-
+	var totalPage=0;
 	function totalCounts() {
 		$.ajax({
 			url: global.root+"/api/gallery/totalcount",
 			success: function(data) {
-				setPages(totalPages(parseInt(data)));
+				totalPage = totalPages(parseInt(data));
+				setPages();
 			},
 		});
 	}
-	totalCounts();
 
 	/* 페이지 세팅*/
 	var startPage =1;
-	var totalPage =0;
 
-	function setPages(totalPages) {
-		totalPage=totalPages;
+	function setPages() {
 		var pageSetting = startPage;
-
 		if (pageSetting === 1) {
 			$(".page-leftest").hide();
 			$(".page-left").hide();
@@ -129,68 +132,69 @@ require([
 		}
 
 		$(".pages").each(function() {
-			if (totalPages>=pageSetting) {
+			if (totalPage>=pageSetting) {
 				$(this).show();
 				$(this).text(pageSetting++);
 			}
-			else if (totalPages<pageSetting) {
+			else if (totalPage<pageSetting) {
 				$(this).hide();
 			}
 		});
-		if (totalPages>=pageSetting) {
+		if (totalPage>=pageSetting) {
 			$(".page-right").show();
 			$(".page-rightest").show();
 		}
-		else if (totalPages<pageSetting) {
+		else if (totalPage<pageSetting) {
 			$(".page-right").hide();
 			$(".page-rightest").hide();
 		}
 	}
-
-	$(".pages").on("click", function() {
-		$(".pages").removeClass("page-active");
-		$(this).addClass("page-active");
-		var pager = parseInt($(this).text());
-		getGalleryData(pager);
-	});
-
-	$(".page-navi").on("click", function() {
-		if ($(this).hasClass("page-leftest")) {
-			startPage = 1;
-			totalCounts();
-			getGalleryData(startPage);
+	/* 페이지 클릭*/
+	function pageNumNavi() {
+		$(".pages").on("click", function() {
 			$(".pages").removeClass("page-active");
-			$(".page-first").addClass("page-active");
-		}
-		else if ($(this).hasClass("page-left")) {
-			startPage-=5;
-			totalCounts();
-			var activePage = startPage;
-			getGalleryData(activePage+4);
-			$(".pages").removeClass("page-active");
-			$(".page-last").addClass("page-active");
-		}
-		else if ($(this).hasClass("page-rightest")) {
-			totalCounts();
-			startPage = Math.floor(totalPage/5)*5+1;
-			getGalleryData(totalPage);
-			$(".pages").removeClass("page-active");
-			$(window).ready(function() {
+			$(this).addClass("page-active");
+			var pager = parseInt($(this).text());
+			getGalleryData(pager);
+		});
+	}
+	/* 페이지 화살표 네비게이션 클릭*/
+	function pageArrowNavi() {
+		$(".page-navi").on("click", function() {
+			if ($(this).hasClass("page-leftest")) {
+				startPage = 1;
+				setPages();
+				getGalleryData(startPage);
+				$(".pages").removeClass("page-active");
+				$(".page-first").addClass("page-active");
+			}
+			else if ($(this).hasClass("page-left")) {
+				startPage-=5;
+				setPages();
+				var activePage = startPage;
+				getGalleryData(activePage+4);
+				$(".pages").removeClass("page-active");
+				$(".page-last").addClass("page-active");
+			}
+			else if ($(this).hasClass("page-rightest")) {
+				startPage = Math.floor(totalPage/5)*5+1;
+				setPages();
+				getGalleryData(totalPage);
+				$(".pages").removeClass("page-active");
 				$(".pages:contains('"+totalPage+"')").addClass("page-active");
-			});
-		}
-		else if ($(this).hasClass("page-right")) {
-			startPage+=5;
-			totalCounts();
-			getGalleryData(startPage);
-			$(".pages").removeClass("page-active");
-			$(".page-first").addClass("page-active");
-		}
-	});
-	/* 갤러리 리스트 이동*/
-	$(".gallery-list>ul>li").on("click", function() {
-		location.href = global.root+"/html-gallery/gallery-details.html";
-	});
+			}
+			else if ($(this).hasClass("page-right")) {
+				startPage+=5;
+				setPages();
+				getGalleryData(startPage);
+				$(".pages").removeClass("page-active");
+				$(".page-first").addClass("page-active");
+			}
+		});
+	}
 
 	getGalleryData(1);
+	totalCounts();
+	pageNumNavi();
+	pageArrowNavi();
 });

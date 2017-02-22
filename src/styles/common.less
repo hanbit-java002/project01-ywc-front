@@ -87,6 +87,14 @@ select:focus {
 	position: relative;
 	text-align: center;
 }
+.header-info-title>ul>li.header-info-bars-icon {
+	display: none;
+	cursor: pointer;
+	font-size: 35px;
+	color: @color-font-light;
+	float: left;
+	margin-left: 10px;
+}
 .header-info-title>ul {
 	line-height: 87px;
 }
@@ -100,16 +108,6 @@ select:focus {
 .mypage {
 	display: none;
 }
-
-@logo-height:48px;
-.header-info-logo {
-	width: 92px;
-	height: @logo-height;
-	margin-top: auto;
-	margin-left: auto;
-	background-size: cover ;
-}
-
 
 .header-info-text {
 	color: #702600;
@@ -826,6 +824,37 @@ footer {
 	.header-info {
 		width: 96%;
 	}
+	#right-bar {
+		display: none;
+	}
+	/* 헤더 수정*/
+	/*  숨김*/
+	.header-info-list,
+	.header-info-phone>div,
+	.header-info-title>ul>li.header-info-text,
+	.header-menu-wrapper {
+		display: none;
+	}
+	/*  변경*/
+	.header-wrapper {
+		border-bottom: 1px solid @color-main-border;
+	}
+	.zd-container {
+		padding-top: 51px;
+	}
+	.header-info-title {
+		height: 50px;
+	}
+	.header-info-title>ul {
+		line-height: 50px;
+	}
+	.header-info-logo>img {
+		width: 70%;
+	}
+	.header-info-title>ul>li.header-info-bars-icon  {
+		display: inline-block;
+	}
+
 }
 @media screen and (max-width:800px){
 	.footer-company-site,

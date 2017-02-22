@@ -14,7 +14,7 @@ require([
 	});
 
 	/* 로그인 서버에 보내는 처리*/
-	$(".login-zipdoc-btn").on("click", function() {
+	function login() {
 		var userId = $("#login-id").val();
 		var userPw = $("#login-pw").val();
 
@@ -45,6 +45,15 @@ require([
 					alert(jqXHR.responseJSON.message);
 				},
 			});
+		}
+	}
+	$(".login-zipdoc-btn").on("click", function() {
+		login();
+	});
+	var ENTER_KEYCODE = 13;
+	$(document).on("keydown", function(event) {
+		if (event.keyCode === ENTER_KEYCODE) {
+			login();
 		}
 	});
 });
