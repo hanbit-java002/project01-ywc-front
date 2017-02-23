@@ -224,9 +224,6 @@ gulp.task('html:dynamic', function() {
 				}
 				return this[pageId][num].subTitle[key];
 			},
-			getTypeInfo: function(pageId) {
-				return this[pageId][0].subTitle["type"];
-			},
 		}
 	};
 

@@ -79,12 +79,12 @@ define([
 			$(".header-details").fadeOut(10);
 		});
 	}
-
-	function setHeaderDetails(id) {
+	/* 이름 세팅해서 가져오기*/
+	function setHeaderDetails(name) {
 		$.ajax({
 			url: global.root+"/api/header/setdetails",
 			data: {
-				headerDetails: id,
+				headerDetails: name,
 			},
 			error: function(jqXHR) {
 				alert(jqXHR.responseJSON.message);
@@ -120,58 +120,72 @@ define([
 		}
 	});
 
-	/* 메뉴바 디테일스 */
-	$(".header-details>ul>li>ul>li>div").on("click", function() {
-		setHeaderDetails(this.id);
-		if(this.id === "house") {
+	function detailsLocation(name) {
+		setHeaderDetails(name);
+		if(this.name === "house") {
 			location.href = global.root+"/html-gallery/gallery.html";
 		}
-		else if(this.id === "commercial") {
+		else if(this.name === "commercial") {
 			location.href = global.root+"/html-gallery/gallery.html";
 		}
-		else if(this.id === "partial") {
+		else if(this.name === "partial") {
 			location.href = global.root+"/html-gallery/gallery.html";
 		}
-		else if(this.id === "curious") {
+		else if(this.name === "curious") {
 			location.href = global.root+"/comunity.html";
 		}
-		else if(this.id === "myroom") {
+		else if(this.name === "myroom") {
 			location.href = global.root+"/comunity.html";
 		}
-		else if(this.id === "review") {
+		else if(this.name === "review") {
 			location.href = global.root+"/comunity.html";
 		}
-		else if(this.id === "interior-tip") {
+		else if(this.name === "interior-tip") {
 			location.href = global.root+"/magazine.html";
 		}
-		else if(this.id === "diary") {
+		else if(this.name === "diary") {
 			location.href = global.root+"/magazine.html";
 		}
-		else if(this.id === "news") {
+		else if(this.name === "news") {
 			location.href = global.root+"/magazine.html";
 		}
-		else if(this.id === "event") {
+		else if(this.name === "event") {
 			location.href = global.root+"/magazine.html";
 		}
-		else if(this.id === "partners-index") {
+		else if(this.name === "partners-index") {
 			location.href = global.root+"/partners.html";
 		}
-		else if(this.id === "partners-inquire") {
+		else if(this.name === "partners-inquire") {
 			location.href = global.root+"/partners.html";
 		}
-		else if(this.id === "estimate-apply") {
+		else if(this.name === "estimate-apply") {
 			location.href = global.root+"/estimate.html";
 		}
-		else if(this.id === "estimate-now") {
+		else if(this.name === "estimate-now") {
 			location.href = global.root+"/estimate.html";
 		}
-		else if(this.id === "estimate-confirm") {
+		else if(this.name === "estimate-confirm") {
 			location.href = global.root+"/estimate.html";
 		}
-		else if(this.id === "store") {
+		else if(this.name === "store") {
 			location.href = global.root+"/store.html";
 		}
+	}
+	/* 메뉴바 디테일스 */
+	$(".header-details>ul>li>ul>li>div").on("click", function() {
+		detailsLocation(this.name);
 	});
+	/*  반응형 헤더 로그인 버튼 눌렀을 때*/
+	function reactHeaderLogin() {
+		$(".side-navi-login-text").on("click", function() {
+				location.href=global.root+"/login.html";
+		});
+	}
+	function reactHeaderDetailsLocation() {
+		$(".side-navi-lists>li").on("click", function() {
+			detailsLocation(this.name);
+		});
+	}
 
 	/* 로고클릭시 메인페이지 가기*/
 	$(".main-logo").on("click", function() {
@@ -184,44 +198,81 @@ define([
 	});
 
 	/* 오른쪽 픽스 값*/
-	function popupCloseRemoveTime() {
-		$(".yellow-layer").remove();
+	function popupCloseRemoveTime(layerColor) {
+		$("."+layerColor+"-layer").remove();
 		$(".zd-popup").remove();
 	}
-	function popupClose() {
-		$(".zd-popup").animate({
-			top: "-50%",
-		}, 200);
-		$(".yellow-layer").fadeOut(300);
-		$(".zd-popup").fadeOut(300);
-		setTimeout(popupCloseRemoveTime, 300);
+	function popupClose(layerName, layerColor) {
+		if (layerName === "easy-estimate") {
+			$(".zd-popup").animate({
+				top: "-50%",
+			}, 200);
+		}
+		else if (layerName === "side-navi") {
+			$(".zd-popup").animate({
+				left: "-100%",
+			}, 300);
+		}
+		$("."+layerColor+"-layer, .zd-popup").fadeOut(300, function() {
+			popupCloseRemoveTime(layerColor);
+		});
 	}
-	function popupOpen(layerName) {
+	function popupOpen(layerName, layerColor) {
 		$.ajax({
 			url: global.root+"/"+"layers/" + layerName + ".html",
 			success: function(html) {
-				var blockLayerHTML = "<div class='yellow-layer ajax'></div>";
+				var blockLayerHTML="";
+
+				blockLayerHTML = "<div class='"+layerColor+"-layer ajax'></div>";
 				$("body").append(blockLayerHTML);
 				$("body").append(html);
-				$(".yellow-layer").fadeIn(200);
+				$("."+layerColor+"-layer").css({
+						"display": "none",
+						"position": "fixed",
+						"width": "100%",
+						"height": "100%",
+						"top": "0px",
+						"left": "0px",
+						"opacity": "0.8",
+						"z-index": "10",
+				});
+				$("."+layerColor+"-layer").css({"background-color": layerColor,
+					});
+				$("."+layerColor+"-layer").fadeIn(200);
 				$(".zd-popup").fadeIn(200);
-				$(".zd-popup").animate({
-					top: "200px",
-				}, 300);
-				zipdocGirl();
-				$(".popup-close-icon, .yellow-layer.ajax").on("click", function() {
-					popupClose();
+				if (layerName === "easy-estimate") {
+					$(".zd-popup").animate({
+						top: "200px",
+					}, 300);
+					zipdocGirl();
+				}
+				else if (layerName === "side-navi") {
+					$(".zd-popup").animate({
+						left: "0px",
+					}, 300);
+				}
+				reactHeaderLogin();
+				reactHeaderDetailsLocation();
+				/* 팝업 닫기*/
+				$(".popup-close-icon, ."+layerColor+"-layer.ajax").on("click", function() {
+					popupClose(layerName, layerColor);
 				});
 			},
 		});
 	}
 
+	/* 반응형시 헤더 부분 클릭이벤트*/
+	$(".header-info-bars-icon").on("click", function() {
+		popupOpen(this.id, "black");
+	});
+
+	/* 우측 픽스드 바 부분*/
 	$(".right-bar-contents>ul>li").on("click", function() {
 		if ((this.id) === "detail-estimate") {
 			location.href = global.root+"/html-gallery"+"/gallery.html";
 		}
 		else if ((this.id) === "easy-estimate") {
-			popupOpen(this.id);
+			popupOpen(this.id, "orange");
 		}
 	});
 	/* 슬라이드*/

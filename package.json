@@ -14,7 +14,7 @@
       "lang": "ko",
       "gallery": [
         {
-          "type" :"갤러리",
+          "typeNames" :"갤러리",
           "id": "house",
           "title": "주거공간",
           "subTitle": {
@@ -39,7 +39,7 @@
 
       "community": [
         {
-          "type" : "커뮤니티",
+          "typeNames" : "커뮤니티",
           "id": "curious",
           "class": "curious-clicker",
           "title": "궁금해요",
@@ -76,7 +76,7 @@
 
       "magazine":[
         {
-          "type" : "매거진",
+          "typeNames" : "매거진",
           "id": "interior-tip",
           "class": "interior-tip-clicker",
           "title":"인테리어 팁",
@@ -123,7 +123,7 @@
       ],
       "partners" : [
         {
-          "type":"파트너스",
+          "typeNames":"파트너스",
           "id": "partners-index",
           "class": "partners-index-clicker",
           "title": "파트너스 목록",
@@ -145,7 +145,7 @@
       ],
       "estimate" : [
         {
-          "type": "견적상담",
+          "typeNames": "견적상담",
           "id": "estimate-apply",
           "class": "estimate-apply-clicker",
           "title": "견적상담신청",
@@ -172,7 +172,7 @@
       ],
       "store" : [
         {
-          "type":"스토어 βeta",
+          "typeNames":"스토어 βeta",
           "id": "store",
           "subTitle": {
             "titleImg": "img/index_icon_store.png",
