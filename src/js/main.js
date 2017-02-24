@@ -27,6 +27,24 @@ require([
 			$(".content-contact").addClass("content-active");
 		}
 	});
+
+	/* 윈도우 사이즈에 따라 달라지는 것 크기 변경*/
+	$(window).resize(function() {
+		console.log("너비: "+window.innerWidth);
+		console.log("높이: "+window.innerHeight);
+		var windowHeight = window.innerWidth;
+		var row1 = parseInt($(".row").css("width"));
+		console.log("높이높ㄴ이"+row1);
+		/* var row2 = 416;*/
+		if (windowHeight < 1300) {
+			/* $(".row1").css("height", minusRow1);
+			$(".row2").css("height", minusRow2);*/
+		}
+		else if (windowHeight > 1300) {
+			/* $(".row1").css("height", minusRow1);
+			$(".row2").css("height", minusRow2);*/
+		}
+	}).resize();
 	itemEnter();
 	itemLeave();
 });

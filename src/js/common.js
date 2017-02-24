@@ -122,58 +122,58 @@ define([
 
 	function detailsLocation(name) {
 		setHeaderDetails(name);
-		if(this.name === "house") {
+		if(name === "house") {
 			location.href = global.root+"/html-gallery/gallery.html";
 		}
-		else if(this.name === "commercial") {
+		else if(name === "commercial") {
 			location.href = global.root+"/html-gallery/gallery.html";
 		}
-		else if(this.name === "partial") {
+		else if(name === "partial") {
 			location.href = global.root+"/html-gallery/gallery.html";
 		}
-		else if(this.name === "curious") {
+		else if(name === "curious") {
 			location.href = global.root+"/comunity.html";
 		}
-		else if(this.name === "myroom") {
+		else if(name === "myroom") {
 			location.href = global.root+"/comunity.html";
 		}
-		else if(this.name === "review") {
+		else if(name === "review") {
 			location.href = global.root+"/comunity.html";
 		}
-		else if(this.name === "interior-tip") {
+		else if(name === "interior-tip") {
 			location.href = global.root+"/magazine.html";
 		}
-		else if(this.name === "diary") {
+		else if(name === "diary") {
 			location.href = global.root+"/magazine.html";
 		}
-		else if(this.name === "news") {
+		else if(name === "news") {
 			location.href = global.root+"/magazine.html";
 		}
-		else if(this.name === "event") {
+		else if(name === "event") {
 			location.href = global.root+"/magazine.html";
 		}
-		else if(this.name === "partners-index") {
+		else if(name === "partners-index") {
 			location.href = global.root+"/partners.html";
 		}
-		else if(this.name === "partners-inquire") {
+		else if(name === "partners-inquire") {
 			location.href = global.root+"/partners.html";
 		}
-		else if(this.name === "estimate-apply") {
+		else if(name === "estimate-apply") {
 			location.href = global.root+"/estimate.html";
 		}
-		else if(this.name === "estimate-now") {
+		else if(name === "estimate-now") {
 			location.href = global.root+"/estimate.html";
 		}
-		else if(this.name === "estimate-confirm") {
+		else if(name === "estimate-confirm") {
 			location.href = global.root+"/estimate.html";
 		}
-		else if(this.name === "store") {
+		else if(name === "store") {
 			location.href = global.root+"/store.html";
 		}
 	}
 	/* 메뉴바 디테일스 */
 	$(".header-details>ul>li>ul>li>div").on("click", function() {
-		detailsLocation(this.name);
+		detailsLocation($(this).attr("name"));
 	});
 	/*  반응형 헤더 로그인 버튼 눌렀을 때*/
 	function reactHeaderLogin() {
@@ -183,7 +183,8 @@ define([
 	}
 	function reactHeaderDetailsLocation() {
 		$(".side-navi-lists>li").on("click", function() {
-			detailsLocation(this.name);
+			console.log($(this).attr("name"));
+			detailsLocation($(this).attr("name"));
 		});
 	}
 
