@@ -187,11 +187,24 @@ define([
 			detailsLocation($(this).attr("name"));
 		});
 	}
+	/* 반응형 바텀*/
+	function reactHeaderBottom() {
+		$(".side-navi-bottom>li").on("click", function() {
+			var name = $(this).attr("name");
+			if (name === "home") {
+				location.href = global.root+"/index.html";
+			}
+			else if (name === "register") {
+				location.href = global.root+"/register.html";
+			}
+		});
+	}
 
 	/* 로고클릭시 메인페이지 가기*/
 	$(".main-logo").on("click", function() {
 		location.href = global.root+"/index.html";
 	});
+
 	/* 헤더 디테일스바 색상변경*/
 	$(".header-details-bar>ul>li").on("click", function() {
 		$(".header-details-bar>ul>li").removeClass("header-details-bar-active");
@@ -254,6 +267,7 @@ define([
 				}
 				reactHeaderLogin();
 				reactHeaderDetailsLocation();
+				reactHeaderBottom();
 				/* 팝업 닫기*/
 				$(".popup-close-icon, ."+layerColor+"-layer.ajax").on("click", function() {
 					popupClose(layerName, layerColor);

@@ -27,7 +27,7 @@
 	margin-bottom: 25px;
 }
 .main-copy-btn {
-	width: 444px;
+	width: 40%;
 	text-align: center;
 	background-color: @color-mango;
 	color:white;
@@ -92,10 +92,17 @@
 	font-size: 14px;
 	color: @color-font-light;
 }
-.main-gallery-titles>img {
+.col1>img {
 	position: absolute;
 	left: 16px;
 	bottom: 8px;
+	width: 20%;
+}
+.col2> img {
+	position: absolute;
+	left: 16px;
+	bottom: 8px;
+	width: 10%;
 }
 
 .main-gallery-more {
@@ -280,12 +287,10 @@
 
 .main-place-wrapper {
 	padding:  30px 2% 30px 2%;
-	height:360px;
 }
 .main-place {
-	position: relative;
 	width: 100%;
-	height: 100%;
+	position: relative;
 }
 .place-box {
 	display: inline-block;
@@ -299,7 +304,6 @@
 	right: 0px;
 	top:0px;
 	width: 74px;
-	height: 40px;
 	background-color: rgba(0,0,0,0.5);
 	padding: 10px 15px;
 	color: white;
@@ -308,7 +312,7 @@
 .place-text-box {
 	padding: 14px 0px;
 	position: absolute;
-	bottom: 0px;
+	bottom: 6px;
 	left: 0px;
 	width: 100%;
 	height: 60px;
@@ -359,7 +363,6 @@
 
 
 .main-community {
-	height: 280px;
 	border: 1px solid @color-main-border;
 	text-align: left;
 	background-color: white;
@@ -379,16 +382,16 @@
 	height: 88px;
 	position: relative;
 	width: 100%;
-
-
+	vertical-align: middle;
 }
 .community-head-text {
+	width: 80%;
 	font-weight: bold;
 	display: inline-block;
-	padding-left: 20px;
+	padding-left: 3%;
 	padding-top: 30px;
-	font-size: 18px;
-	vertical-align: top;
+	font-size: 16px;
+	vertical-align: middle;
 }
 .head-qa {
 	border-left: solid 1px red;
@@ -401,8 +404,9 @@
 }
 .community-head>img {
 	display: inline-block;
-	padding-right: 20px;
+	padding-right: 2%;
 	padding-top: 38px;
+	vertical-align: middle;
 }
 
 .community-qa-list-wrapper {
@@ -418,7 +422,7 @@
 	position: absolute;
 }
 .community-qa-list-wrapper>ul>li {
-	width: 325px;
+	width: 10%;
 	height: 100%;
 }
 .community-q-list {
@@ -481,7 +485,7 @@
 .community-head-review-list-wrapper {
 	margin-top: 30px;
 	height: 120px;
-	width: 10%;
+	width: 100%;
 	overflow: hidden;
 	position: relative;
 }
@@ -494,7 +498,7 @@
 
 
 .community-head-review-list-wrapper>ul>li {
-	width: 658px;
+	width: 10%;
 	height: 100%;
 	display: inline-block;
 	position: relative;
@@ -525,8 +529,12 @@
 }
 .community-user-img{
 	position: absolute;
+	width: 17%;
 	bottom: 0px;
-	right:00px;
+	right: 0px;
+}
+.community-user-img>img{
+	width: 80%;
 }
 .community-name {
 	position: absolute;
@@ -535,14 +543,13 @@
 	color: @color-font-light;
 }
 .community-square {
+	right: -8px;
 	position: absolute;
-	width: 15px;
-	height: 15px;
-	background-color: @color-font-light;
-	transform: rotate(45deg);
-	right: 143px;
+	border-bottom: solid 15px #9d9d9d;
+	border-left: solid 15px transparent;
+	transform: rotate(-45deg);
 	bottom: 55px;
-	z-index: 2;
+
 }
 .community-review-circle {
 	padding-top: 2px;
@@ -593,7 +600,6 @@
 
 .gallery-partner-title {
 	width: 100%;
-	height: 90px;
 	background-color: white;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -620,7 +626,7 @@
 .gallery-partner-list-wrapper {
 	padding:  15px 0px 0px 0px;
 	position: relative;
-	height: 312px;
+	overflow: hidden;
 
 }
 .gallery-partner-list>li {
@@ -633,6 +639,7 @@
 .partner-list-img {
 	width: 100%;
 	height: 247px;
+	background-size: cover;
 }
 .partner-list-tag {
 	text-align: left;
@@ -727,7 +734,7 @@
 	@margin-auto-width();
 	color: @color-font-light;
 	border: 1px solid @color-main-border;
-	width: 128px;
+	width: 75%;
 	height: 34px;
 	background-color: white;
 	line-height: 34px;
@@ -786,7 +793,28 @@
 	.wrapper {
 		width: 80%;
 	}
+}
+@media screen and (max-width: 1300px){
+	.community-review{
+		width: 100%;
+	}
+	.community-qa {
+		width: 100%;
+	}
+}
+@media screen and (max-width:1190px )  {
+	.main-gallery-titles {
+		font-size: 14px;
+		padding: 10px;
+	}
 
+	.main-gallery-titles>span {
+		font-size: 10px;
+	}
+
+	.main-gallery-more {
+		font-size: 10px;
+	}
 }
 @media screen and (max-width:800px )  {
 	.wrapper {
@@ -798,4 +826,18 @@
 	.col2 {
 		width: calc(~"100% - 16px");
 	}
+	.place-box {
+		width: 100%;
+		height: 250px;
+	}
+	.col2> img {
+		width: 10%;
+	}
+	.gallery-partner-list>li {
+		width: 100%;
+	}
+	.content-more {
+		font-size: 10px;
+	}
+
 }

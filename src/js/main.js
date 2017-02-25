@@ -33,16 +33,24 @@ require([
 		console.log("너비: "+window.innerWidth);
 		console.log("높이: "+window.innerHeight);
 		var windowHeight = window.innerWidth;
-		var row1 = parseInt($(".row").css("width"));
-		console.log("높이높ㄴ이"+row1);
-		/* var row2 = 416;*/
-		if (windowHeight < 1300) {
-			/* $(".row1").css("height", minusRow1);
-			$(".row2").css("height", minusRow2);*/
+		var row1 = 200;
+		var row2 = 416;
+		var resultRow1 = row1 - (1200-windowHeight);
+		var resultRow2 = row2 - (1200-windowHeight);
+		if (windowHeight < 1200) {
+			$(".row1").css("height", resultRow1);
+			$(".row2").css("height", resultRow2);
 		}
-		else if (windowHeight > 1300) {
-			/* $(".row1").css("height", minusRow1);
-			$(".row2").css("height", minusRow2);*/
+		else if (windowHeight > 1200) {
+			$(".row1").css("height", resultRow1);
+			$(".row2").css("height", resultRow2);
+		}
+		if (windowHeight < 800) {
+			console.log("바뀜");
+			$(".title-service").text("현장체크");
+		}
+		else if (windowHeight > 800) {
+			$(".title-service").text("집닥맨의 현장 체크 서비스");
 		}
 	}).resize();
 	itemEnter();
