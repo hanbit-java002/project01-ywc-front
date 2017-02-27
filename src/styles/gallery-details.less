@@ -56,17 +56,30 @@
 .show-viewer {
 	position: relative;
 	width: 100%;
-	height: auto;
-	overflow: hidden;
 }
 .show-viewer-lists {
 	width: 1000%;
-	height: 100%;
+	position: relative;
+	left: calc(~ " -(10% + 10px)");
+	overflow: hidden;
 }
-.show-viewer-factor {
+.show-viewer-lists>li {
+	display: inline-block;
+	margin-right: 10px;
 	width: 10%;
 }
-.show-viewer-factor>img {
+.show-viewer-lists>li:last-child {
+	margin-left: 0px;
+}
+
+.show-viewer-factor {
+	width: 100%;
+}
+/* .show-viewer-factor>div {
+	padding-top: 80%;
+	background-size: 100% 100%;
+}*/
+ .show-viewer-factor>img {
 	width:100%;
 	height: auto;
 }
