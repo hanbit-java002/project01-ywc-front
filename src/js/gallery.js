@@ -48,16 +48,36 @@ require([
 	$("#select-space").on("change", function() {
 		spaceSelectInit($(this).val());
 	});
+	/* 메인이미지들 가져오기*/
+	function getMainImgs(galleryid) {
+		var img="";
+		$.ajax({
+			url: global.root+"/api/gallery/main/img",
+			async: false,
+			data: {
+				galleryId: galleryid,
+			},
+			success: function(items) {
+				img= items.mainimg;
+				console.log(img);
+			},
+		});
+		return img;
+	}
 
 	/* 페이징 기법 초기 세팅*/
 	function setGalleryLists(items) {
 		var galleyHtml="";
-		var img = "/img/720x480_20170118160938280_e6JRX2pT9n.jpg";
 		for (var count = 0; count < items.length; count++ ) {
 			var item = items[count];
-			galleyHtml+="<li>";
+			var itemImg=getMainImgs(item.galleryid);
+			if (itemImg === undefined || itemImg === "") {
+				itemImg = "zipdoc_bottom_service_man.png";
+			}
+			galleyHtml+="<li id="+item.galleryid+">";
 			galleyHtml+="	<div class=\"gallery-list-form\">";
-			galleyHtml+="	<div class=\"gallery-list-img\" style=\"background-image: url('"+global.root+img+"')\">";
+			galleyHtml+="<div class=\"gallery-list-img\" ";
+			galleyHtml+="style=\"background-image: url('"+global.root+"/img/"+itemImg+"')\">";
 			galleyHtml+="		</div>";
 			galleyHtml+="		<div class=\"gallery-list-text\">";
 			galleyHtml+="			<div class=\"gallery-list-title overflow-text\">"+item.title+"</div>";
@@ -81,7 +101,9 @@ require([
 
 		/* 갤러리 리스트 이동*/
 		$(".gallery-list>ul>li").on("click", function() {
-			location.href = global.root+"/html-gallery/gallery-details.html";
+			var url = global.root + "/html-gallery/gallery-details.html";
+			url += "?id="+$(this).attr("id");
+			location.href = url;
 		});
 	}
 	var VIEWITEMS = 12;
