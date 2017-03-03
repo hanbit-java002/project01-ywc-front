@@ -115,12 +115,87 @@ require([
 	}
 
 	console.log(getQuerystring("id"));
-	function setGalleryDetails(items) {
+	function SetGalleryDetailsImgs(items) {
+		var htmlImg="";
 		for (var count=0; count<items.length; count++) {
 			var item = items[count];
-			item.
+			htmlImg = "<li class=\"show-viewer-factor\">";
+			htmlImg = "	<img src=\""+global.root+"/img/"+item.img+"\">";
+			htmlImg = "</li>";
 		}
+		$(".show-viewer-lists").append(htmlImg);
 	}
+
+	function InitGalleryDetailsImgs() {
+		$.ajax({
+			url:  global.root+"/api/gallery/imgs",
+			data: {
+				galleryId: getQuerystring("id"),
+			},
+			success: function(items) {
+				SetGalleryDetailsImgs(items);
+			},
+		});
+	}
+
+	function SetGalleryDetails(items) {
+		var htmlTitle="";
+		var htmlDesc="";
+
+		for (var count=0; count<items.length; count++) {
+			var item = items[count];
+
+			htmlTitle="	<ul class=\"summary-header-title\">";
+			htmlTitle="		<li>";
+			htmlTitle=				item.title;
+			htmlTitle="		</li>";
+			htmlTitle="		<li>";
+			htmlTitle="			<i class=\"fa fa-eye\">+item.watcher+</i>";
+			htmlTitle="			<i class=\"fa fa-paperclip\">"+item.clip+"</i>";
+			htmlTitle="			<i class=\"fa fa-share-alt\">"+item.favor+"</i>";
+			htmlTitle="		</li>";
+			htmlTitle="	</ul>";
+			htmlTitle="	<ul class=\"summary-header-desc\">";
+			htmlTitle="		<li>"+item.addr+"</li>";
+			htmlTitle="		<li>"+item.size+"평</li>";
+			htmlTitle="		<li>"+item.cost+"만원</li>";
+			htmlTitle="	</ul>";
+
+			htmlDesc="<ul>";
+			htmlDesc="	<li>";
+			htmlDesc="		<div class=\"galinfo-title\">공사명</div>";
+			htmlDesc="		<div class=\"galinfo-desc\">"+item.title+"</div>";
+			htmlDesc="	</li>";
+			htmlDesc="	<li>";
+			htmlDesc="		<div class=\"galinfo-title\">공사구분</div>";
+			htmlDesc="		<div class=\"galinfo-desc\">"+item.type+"</div>";
+			htmlDesc="	</li>";
+			htmlDesc="	<li>";
+			htmlDesc="		<div class=\"galinfo-title\">공사면적</div>";
+			htmlDesc="		<div class=\"galinfo-desc\">"+item.size+"평</div>";
+			htmlDesc="	</li>";
+			htmlDesc="	<li>";
+			htmlDesc="		<div class=\"galinfo-title\">공사지역</div>";
+			htmlDesc="		<div class=\"galinfo-desc\">"+item.addr+"</div>";
+			htmlDesc="	</li>";
+			htmlDesc="	<li>";
+			htmlDesc="		<div class=\"galinfo-title\">공사기간</div>";
+			htmlDesc="		<div class=\"galinfo-desc\">"+item.terms;+"</div>";
+			htmlDesc="	</li>";
+			htmlDesc="	<li>";
+			htmlDesc="		<div class=\"galinfo-title\">시공방법	</div>";
+			htmlDesc="		<div class=\"galinfo-desc\">"+item.method+"</div>";
+			htmlDesc="	</li>";
+			htmlDesc="	<li>";
+			htmlDesc="		<div class=\"galinfo-title\">시공업체	</div>";
+			htmlDesc="		<div class=\"galinfo-desc\">"+item.partnername+"</div>";
+			htmlDesc="	</li>";
+			htmlDesc="</ul>";
+		}
+		$(".summary-header").append(htmlTitle);
+		$(".summary-contents-galinfo").prepend(htmlDesc);
+	}
+
 	function InitGalleryDetails() {
 		$.ajax({
 			url:  global.root+"/api/gallery/detail",
@@ -128,9 +203,30 @@ require([
 				galleryId: getQuerystring("id"),
 			},
 			success: function(items) {
-				setGalleryDetails(items);
+				SetGalleryDetails(items);
 			},
 		});
 	}
-	InitGalleryDetails()
+
+	function SetGalleryPartners(items) {
+		for (var count=0; count<items.length; count++) {
+			var item = items[count];
+			$(".galpartners-contents-name").text(item.partnername);
+		}
+	}
+
+	function InitGalleryPartners() {
+		$.ajax({
+			url:  global.root+"/api/gallery/partners",
+			data: {
+				galleryId: getQuerystring("id"),
+			},
+			success: function(items) {
+				SetGalleryPartners(items);
+			},
+		});
+	}
+	InitGalleryDetailsImgs();
+	InitGalleryDetails();
+	InitGalleryPartners();
 });
