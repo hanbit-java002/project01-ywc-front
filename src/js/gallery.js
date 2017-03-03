@@ -48,37 +48,45 @@ require([
 	$("#select-space").on("change", function() {
 		spaceSelectInit($(this).val());
 	});
-	/* 메인이미지들 가져오기*/
-	function getMainImgs(galleryid) {
-		var img="";
-		$.ajax({
-			url: global.root+"/api/gallery/main/img",
-			async: false,
-			data: {
-				galleryId: galleryid,
-			},
-			success: function(items) {
-				img= items.mainimg;
-				console.log(img);
-			},
-		});
-		return img;
-	}
 
 	/* 페이징 기법 초기 세팅*/
+	/* 메인이미지들 가져오기*/
+	var VIEWITEMS = 12;
+	function getMainImgs(pager) {
+		$.ajax({
+			url: global.root+"/api/gallery/main/img",
+			data: {
+				pager: pager,
+				viewItems: VIEWITEMS,
+			},
+			success: function(items) {
+				for (var count=0; count<items.length; count++) {
+					var imgURl="";
+					var itemImg=items[count].mainimg;
+					var itemId=items[count].galleryid;
+					console.log("아이디"+itemId);
+					console.log("이미지"+itemImg);
+					if (itemImg === undefined || itemImg === "" || itemId === undefined || itemId === "" ) {
+						imgURl ="zipdoc_bottom_service_man.png";
+					}
+					else {
+						imgURl=itemImg;
+					}
+					$("#"+itemId+">div>.gallery-list-img").css("background-image",
+						"url('"+global.root+"/img/"+imgURl+"')");
+				}
+			},
+		});
+	}
+
+	/* 갤리리 리스트 가져오기*/
 	function setGalleryLists(items) {
 		var galleyHtml="";
 		for (var count = 0; count < items.length; count++ ) {
 			var item = items[count];
-			var itemImg=getMainImgs(item.galleryid);
-			if (itemImg === undefined || itemImg === "") {
-				itemImg = "zipdoc_bottom_service_man.png";
-			}
 			galleyHtml+="<li id="+item.galleryid+">";
 			galleyHtml+="	<div class=\"gallery-list-form\">";
-			galleyHtml+="<div class=\"gallery-list-img\" ";
-			galleyHtml+="style=\"background-image: url('"+global.root+"/img/"+itemImg+"')\">";
-			galleyHtml+="		</div>";
+			galleyHtml+="		<div class=\"gallery-list-img\"></div>";
 			galleyHtml+="		<div class=\"gallery-list-text\">";
 			galleyHtml+="			<div class=\"gallery-list-title overflow-text\">"+item.title+"</div>";
 			galleyHtml+="			<div class=\"list-addr overflow-text\">"+item.addr+"</div>";
@@ -106,7 +114,7 @@ require([
 			location.href = url;
 		});
 	}
-	var VIEWITEMS = 12;
+
 	function getGalleryData(pager) {
 		$.ajax({
 			url: global.root+"/api/gallery/lists",
@@ -116,6 +124,7 @@ require([
 			},
 			success: function(items) {
 				setGalleryLists(items);
+				getMainImgs(pager);
 			},
 		});
 	}
