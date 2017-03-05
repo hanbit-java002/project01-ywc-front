@@ -87,7 +87,6 @@ require([
 						else {
 							if ($(this).index() === 0) {
 								slider.index--;
-								console.log("왼쪽"+slider.index);
 							}
 							slider.tx[$(this).index()] += listWidth;
 						}
@@ -102,7 +101,6 @@ require([
 						else {
 							if ($(this).index() === 0) {
 								slider.index++;
-								console.log("오른쪽"+slider.index);
 							}
 							slider.tx[$(this).index()] -= listWidth;
 						}
@@ -114,119 +112,141 @@ require([
 		});
 	}
 
-	console.log(getQuerystring("id"));
-	function SetGalleryDetailsImgs(items) {
+	function setGalleryDetailsImgs(items) {
 		var htmlImg="";
 		for (var count=0; count<items.length; count++) {
 			var item = items[count];
-			htmlImg = "<li class=\"show-viewer-factor\">";
-			htmlImg = "	<img src=\""+global.root+"/img/"+item.img+"\">";
-			htmlImg = "</li>";
+			htmlImg += "<li class=\"show-viewer-factor\">";
+			htmlImg += "	<img src=\""+global.root+"/img/"+item.galleryimgs+"\">";
+			htmlImg += "</li>";
 		}
 		$(".show-viewer-lists").append(htmlImg);
 	}
 
-	function InitGalleryDetailsImgs() {
+	function initGalleryDetailsImgs() {
 		$.ajax({
-			url:  global.root+"/api/gallery/imgs",
+			url: global.root+"/api/gallery/imgs",
 			data: {
 				galleryId: getQuerystring("id"),
 			},
 			success: function(items) {
-				SetGalleryDetailsImgs(items);
+				setGalleryDetailsImgs(items);
 			},
 		});
 	}
 
-	function SetGalleryDetails(items) {
+	function setGalleryDetails(items) {
 		var htmlTitle="";
 		var htmlDesc="";
 
 		for (var count=0; count<items.length; count++) {
 			var item = items[count];
 
-			htmlTitle="	<ul class=\"summary-header-title\">";
-			htmlTitle="		<li>";
-			htmlTitle=				item.title;
-			htmlTitle="		</li>";
-			htmlTitle="		<li>";
-			htmlTitle="			<i class=\"fa fa-eye\">+item.watcher+</i>";
-			htmlTitle="			<i class=\"fa fa-paperclip\">"+item.clip+"</i>";
-			htmlTitle="			<i class=\"fa fa-share-alt\">"+item.favor+"</i>";
-			htmlTitle="		</li>";
-			htmlTitle="	</ul>";
-			htmlTitle="	<ul class=\"summary-header-desc\">";
-			htmlTitle="		<li>"+item.addr+"</li>";
-			htmlTitle="		<li>"+item.size+"평</li>";
-			htmlTitle="		<li>"+item.cost+"만원</li>";
-			htmlTitle="	</ul>";
+			htmlTitle+="	<ul class=\"summary-header-title\">";
+			htmlTitle+="		<li>";
+			htmlTitle+=				item.title;
+			htmlTitle+="		</li>";
+			htmlTitle+="		<li>";
+			htmlTitle+="			<i class=\"fa fa-eye\">"+item.watcher+"</i>";
+			htmlTitle+="			<i class=\"fa fa-paperclip\">"+item.clip+"</i>";
+			htmlTitle+="			<i class=\"fa fa-share-alt\">"+item.favor+"</i>";
+			htmlTitle+="		</li>";
+			htmlTitle+="	</ul>";
+			htmlTitle+="	<ul class=\"summary-header-desc\">";
+			htmlTitle+="		<li>"+item.addr+"</li>";
+			htmlTitle+="		<li>"+item.size+"평</li>";
+			htmlTitle+="		<li>"+item.cost+"만원</li>";
+			htmlTitle+="	</ul>";
 
-			htmlDesc="<ul>";
-			htmlDesc="	<li>";
-			htmlDesc="		<div class=\"galinfo-title\">공사명</div>";
-			htmlDesc="		<div class=\"galinfo-desc\">"+item.title+"</div>";
-			htmlDesc="	</li>";
-			htmlDesc="	<li>";
-			htmlDesc="		<div class=\"galinfo-title\">공사구분</div>";
-			htmlDesc="		<div class=\"galinfo-desc\">"+item.type+"</div>";
-			htmlDesc="	</li>";
-			htmlDesc="	<li>";
-			htmlDesc="		<div class=\"galinfo-title\">공사면적</div>";
-			htmlDesc="		<div class=\"galinfo-desc\">"+item.size+"평</div>";
-			htmlDesc="	</li>";
-			htmlDesc="	<li>";
-			htmlDesc="		<div class=\"galinfo-title\">공사지역</div>";
-			htmlDesc="		<div class=\"galinfo-desc\">"+item.addr+"</div>";
-			htmlDesc="	</li>";
-			htmlDesc="	<li>";
-			htmlDesc="		<div class=\"galinfo-title\">공사기간</div>";
-			htmlDesc="		<div class=\"galinfo-desc\">"+item.terms;+"</div>";
-			htmlDesc="	</li>";
-			htmlDesc="	<li>";
-			htmlDesc="		<div class=\"galinfo-title\">시공방법	</div>";
-			htmlDesc="		<div class=\"galinfo-desc\">"+item.method+"</div>";
-			htmlDesc="	</li>";
-			htmlDesc="	<li>";
-			htmlDesc="		<div class=\"galinfo-title\">시공업체	</div>";
-			htmlDesc="		<div class=\"galinfo-desc\">"+item.partnername+"</div>";
-			htmlDesc="	</li>";
-			htmlDesc="</ul>";
+			htmlDesc+="<ul>";
+			htmlDesc+="	<li>";
+			htmlDesc+="		<div class=\"galinfo-title\">공사명</div>";
+			htmlDesc+="		<div class=\"galinfo-desc\">"+item.title+"</div>";
+			htmlDesc+="	</li>";
+			htmlDesc+="	<li>";
+			htmlDesc+="		<div class=\"galinfo-title\">공사구분</div>";
+			htmlDesc+="		<div class=\"galinfo-desc\">"+item.type+"</div>";
+			htmlDesc+="	</li>";
+			htmlDesc+="	<li>";
+			htmlDesc+="		<div class=\"galinfo-title\">공사면적</div>";
+			htmlDesc+="		<div class=\"galinfo-desc\">"+item.size+"평</div>";
+			htmlDesc+="	</li>";
+			htmlDesc+="	<li>";
+			htmlDesc+="		<div class=\"galinfo-title\">공사지역</div>";
+			htmlDesc+="		<div class=\"galinfo-desc\">"+item.addr+"</div>";
+			htmlDesc+="	</li>";
+			htmlDesc+="	<li>";
+			htmlDesc+="		<div class=\"galinfo-title\">공사기간</div>";
+			htmlDesc+="		<div class=\"galinfo-desc\">"+item.terms+"</div>";
+			htmlDesc+="	</li>";
+			htmlDesc+="	<li>";
+			htmlDesc+="		<div class=\"galinfo-title\">시공방법	</div>";
+			htmlDesc+="		<div class=\"galinfo-desc\">"+item.method+"</div>";
+			htmlDesc+="	</li>";
+			htmlDesc+="	<li>";
+			htmlDesc+="		<div class=\"galinfo-title\">시공업체	</div>";
+			htmlDesc+="		<div class=\"galinfo-desc\">"+item.partnername+"</div>";
+			htmlDesc+="	</li>";
+			htmlDesc+="</ul>";
 		}
 		$(".summary-header").append(htmlTitle);
 		$(".summary-contents-galinfo").prepend(htmlDesc);
 	}
 
-	function InitGalleryDetails() {
+	function initGalleryDetails() {
 		$.ajax({
-			url:  global.root+"/api/gallery/detail",
+			url: global.root+"/api/gallery/detail",
 			data: {
 				galleryId: getQuerystring("id"),
 			},
 			success: function(items) {
-				SetGalleryDetails(items);
+				setGalleryDetails(items);
 			},
 		});
 	}
 
-	function SetGalleryPartners(items) {
+	function setGalleryPartners(items) {
+		var htmlPartnersImg="";
 		for (var count=0; count<items.length; count++) {
 			var item = items[count];
 			$(".galpartners-contents-name").text(item.partnername);
+			htmlPartnersImg = "<img class=\"galpartners-img\" src='"+global.root+"/img/"+item.partnerimg+"'>";
+			$(".galpartners-contents-desc.specialty").text(item.partnerspecialty);
+			$(".galpartners-contents-desc.range").text(item.partnerrange);
 		}
+		$(".galpartners-img-box").append(htmlPartnersImg);
 	}
 
-	function InitGalleryPartners() {
+	function initGalleryPartners() {
 		$.ajax({
-			url:  global.root+"/api/gallery/partners",
+			url: global.root+"/api/gallery/partner",
 			data: {
 				galleryId: getQuerystring("id"),
 			},
 			success: function(items) {
-				SetGalleryPartners(items);
+				setGalleryPartners(items);
 			},
 		});
 	}
-	InitGalleryDetailsImgs();
-	InitGalleryDetails();
-	InitGalleryPartners();
+/*	function SetGalleryPartnersExample(items) {
+		for (var count=0; count<items.length; count++) {
+			var item = items[count];
+		}
+	}
+	function InitGalleryPartnersExample() {
+		$.ajax({
+			url:  global.root+"/api/gallery/partners/example/limit",
+			data: {
+				galleryId: getQuerystring("id"),
+			},
+			success: function(items) {
+				SetGalleryPartnersExample(items);
+			},
+		});
+	}*/
+	console.log($.cookie("galleryId"));
+	initGalleryDetailsImgs();
+	initGalleryDetails();
+	initGalleryPartners();
+	/* InitGalleryPartnersExample();*/
 });

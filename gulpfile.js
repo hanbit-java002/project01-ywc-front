@@ -93,6 +93,7 @@ gulp.task('copy', [
     'copy:jquery',
     'copy:normalize',
     'copy:bootstrap',
+	'copy:jquery.cookie',
     'copy:font-awesome',
     'copy:clipboard',
     'copy:license',
@@ -145,6 +146,14 @@ gulp.task('copy:bootstrap', function () {
         gulp.src(['node_modules/bootstrap/dist/fonts/*'])
             .pipe(gulp.dest(dirs.dist + '/plugins/bootstrap/fonts'))
     );
+});
+gulp.task('copy:jquery.cookie', function() {
+	return all(
+		gulp.src(['node_modules/jquery.cookie/jquery.cookie.js'])
+			.pipe(uglify())
+			.pipe(plugins.rename('jquery.cookie.min.js'))
+			.pipe(gulp.dest(dirs.dist + '/plugins/jquery.cookie'))
+	) ;
 });
 
 gulp.task('copy:clipboard', function () {

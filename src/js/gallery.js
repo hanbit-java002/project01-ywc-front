@@ -64,8 +64,6 @@ require([
 					var imgURl="";
 					var itemImg=items[count].mainimg;
 					var itemId=items[count].galleryid;
-					console.log("아이디"+itemId);
-					console.log("이미지"+itemImg);
 					if (itemImg === undefined || itemImg === "" || itemId === undefined || itemId === "" ) {
 						imgURl ="zipdoc_bottom_service_man.png";
 					}
@@ -226,6 +224,8 @@ require([
 	$(".header-info-bars-icon").on("click", function() {
 
 	});
+	$.cookie("galleryId", "hihi", {path: "/"});
+	console.log($.cookie("galleryId"));
 
 	getGalleryData(1);
 	totalCounts();

@@ -1,5 +1,6 @@
 define([
 	"bootstrap",
+	"jquery.cookie",
 ], function() {
 	/* 상단 로그인 회원가입 고개센터*/
 	$(".header-info-list>ul>li").on("click", function() {
