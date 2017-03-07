@@ -244,7 +244,6 @@ require([
 			},
 		});
 	}*/
-	console.log($.cookie("galleryId"));
 	initGalleryDetailsImgs();
 	initGalleryDetails();
 	initGalleryPartners();

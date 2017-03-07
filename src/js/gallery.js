@@ -105,10 +105,28 @@ require([
 
 		$(".gallery-list>ul").html(galleyHtml);
 
+		/* 쿠키 설정*/
+		var galleryCookieList=[];
+		var galleryCookie = $.cookie("galleryId");
+		if (!(galleryCookie === "" || galleryCookie === undefined)) {
+			galleryCookieList= JSON.parse(galleryCookie);
+			console.log(galleryCookieList);
+			/* 오른쪽바에 이미지 넣기*/
+		}
 		/* 갤러리 리스트 이동*/
 		$(".gallery-list>ul>li").on("click", function() {
 			var url = global.root + "/html-gallery/gallery-details.html";
-			url += "?id="+$(this).attr("id");
+			var galleryId = $(this).attr("id");
+			url += "?id="+galleryId;
+
+			if($.inArray(galleryId, galleryCookieList) === -1) {
+				if (galleryCookieList.length >= 3) {
+					galleryCookieList.shift();
+				}
+				galleryCookieList.push(galleryId);
+				var cookieListJson=JSON.stringify(galleryCookieList);
+				$.cookie("galleryId", cookieListJson, {path: "/"});
+			}
 			location.href = url;
 		});
 	}
@@ -224,8 +242,7 @@ require([
 	$(".header-info-bars-icon").on("click", function() {
 
 	});
-	$.cookie("galleryId", "hihi", {path: "/"});
-	console.log($.cookie("galleryId"));
+
 
 	getGalleryData(1);
 	totalCounts();

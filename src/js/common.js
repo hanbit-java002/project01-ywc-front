@@ -338,6 +338,27 @@ define([
 	function zipdocGirl() {
 		$(".zipdoc-girl").attr("src", global.root+"/img/img_modal_bg_character.png");
 	}
+	/* 쿠키 갤러리*/
+	var galleryCookie = $.cookie("galleryId");
+	if (!(galleryCookie === "" || galleryCookie === undefined)) {
+		$.ajax({
+			url: global.root + "/api/cookie/gallery",
+			data: {
+				galleryCookie: galleryCookie,
+			},
+			success: function(items) {
+				$(".recent-lists").remove();
+				var htmlImgs="";
+				for (var count=0; count<items.length; count++) {
+					var item=items[count];
+					htmlImgs+="<li name="+item.galleryid+" class=\"recent-lists\">";
+					htmlImgs+="	<img src='"+global.root+"/img/"+item.mainimg+"'>";
+					htmlImgs+="	</li>";
+				}
+				$(".right-bar-contents>ul").append(htmlImgs);
+			},
+		});
+	}
 
 	logedIncheck();
 	mainLogoEnter();
