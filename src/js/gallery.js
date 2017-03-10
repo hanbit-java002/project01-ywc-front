@@ -1,6 +1,7 @@
 require([
 	"common",
 ], function() {
+	var common = require("common");
 	/* 셀렉트 박스들*/
 	function spaceSelectInit(id) {
 		if (id === "gallery") {
@@ -105,25 +106,28 @@ require([
 
 		$(".gallery-list>ul").html(galleyHtml);
 
-		/* 쿠키 설정*/
-		var galleryCookieList=[];
-		var galleryCookie = $.cookie("galleryId");
-		if (!(galleryCookie === "" || galleryCookie === undefined)) {
-			galleryCookieList= JSON.parse(galleryCookie);
-			console.log(galleryCookieList);
-			/* 오른쪽바에 이미지 넣기*/
-		}
 		/* 갤러리 리스트 이동*/
 		$(".gallery-list>ul>li").on("click", function() {
 			var url = global.root + "/html-gallery/gallery-details.html";
 			var galleryId = $(this).attr("id");
+			var galleryImgURL= $(this).find(".gallery-list-img").css("background-image");
+			console.log(galleryImgURL);
+			var imgUrlStart = galleryImgURL.indexOf("img/")+4;
+			var imgUrlEnd = galleryImgURL.indexOf("\")");
+			var imgUrl=galleryImgURL.substring(imgUrlStart, imgUrlEnd);
+
+
 			url += "?id="+galleryId;
+			var galleryCookieList=common.getGalleryCookie();
 
 			if($.inArray(galleryId, galleryCookieList) === -1) {
 				if (galleryCookieList.length >= 3) {
 					galleryCookieList.shift();
 				}
-				galleryCookieList.push(galleryId);
+				galleryCookieList.push({
+					galleryId: galleryId,
+					galleryImg: imgUrl,
+				});
 				var cookieListJson=JSON.stringify(galleryCookieList);
 				$.cookie("galleryId", cookieListJson, {path: "/"});
 			}
