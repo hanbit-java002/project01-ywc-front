@@ -1,6 +1,7 @@
 require([
 	"common",
 ], function() {
+	/* url 주소 넘겨서 받기 논 ajax*/
 	function getQuerystring(paraName) {
 		var tempURL = location.search.substring(1);
 		var tempUnitURL=tempURL.split("&");
